@@ -104,7 +104,7 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="text-center mb-4">
-            <img src="https://i.imgur.com/vjH6d7C.png" width="120">
+            <img src="" width="120">
         </div>
 
         <div class="menu-item">
