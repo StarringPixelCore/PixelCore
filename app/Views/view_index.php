@@ -104,7 +104,7 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="text-center mb-4">
-            <img src="" width="120">
+            <img src="<?= base_url('public/assets/image/feutech.png') ?>" width="120">
         </div>
 
         <div class="menu-item">
@@ -128,10 +128,10 @@
         </div>
 
 
-        <!-- PROFILE -->
+        <!-- PROFILE (placeholder na muna waiting for backend) -->
         <div class="profile-box mt-5">
-            <img src="https://i.imgur.com/jQ5T3kO.png">
-            <p class="m-0" style="color:#F7E967">Charlie Morningstar</p>
+            <img src="">
+            <p class="m-0" style="color:#F7E967"></p>
         </div>
     </div>
 
