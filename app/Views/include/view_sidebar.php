@@ -1,3 +1,23 @@
+ <?php
+    $isLoggedIn = session()->has('user_id');
+    $user = null;
+    $profilePic = 'default.png';
+    $displayName = 'Guest User';
+    $linkTarget = base_url('login');
+
+    if ($isLoggedIn) {
+        $userModel = new \App\Models\UserModel();
+        $user = $userModel->find(session()->get('user_id'));
+
+        if ($user) {
+            $profilePic = $user['profile_picture'];
+            $displayName = $user['fullname'];
+            $linkTarget = base_url('profile');
+        }
+    }
+    ?>
+
+ 
  <!-- SIDEBAR -->
   
     <div class="sidebar">
@@ -14,11 +34,13 @@
     </nav>
 
 
-        <!-- PROFILE (placeholder na muna waiting for backend) -->
-        <div class="profile-box mt-5">
-            <img src="">
-            <p class="m-0"></p>
+        <!-- PROFILE -->
+       <a href="<?= $linkTarget ?>" class="profile-box-wrapper">
+        <div class="profile-box">
+            <img src="<?= base_url('writable/uploads/profile/' . $profilePic) ?>" class="profile-img">
+            <p class="profile-name"><?= esc($displayName) ?></p>
         </div>
-    
+    </a>
+
     
     </div>

@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
 
     <style>
-        body {
-            background-color: #f4f4f4;
-        }
+       
         .left-image {
-            background: url('<?= base_url("assets/img/login_bg.jpg") ?>') no-repeat center center;
+            background: url('<?= base_url("assets/login_bg.jpg") ?>') no-repeat center center;
             background-size: cover;
             height: 100vh;
         }
