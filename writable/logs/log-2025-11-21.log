@@ -16,3 +16,45 @@ in APPPATH\Controllers\Home.php on line 9.
  4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-21 05:06:40 --> ErrorException: Undefined variable $active
+[Method: GET, Route: /]
+in APPPATH\Views\view_index.php on line 111.
+ 1 APPPATH\Views\view_index.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\PixelCore\\app\\Views\\view_index.php', 111)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\view_index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('view_index', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(9): view('view_index')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-21 05:08:01 --> ErrorException: Undefined variable $active
+[Method: GET, Route: /]
+in APPPATH\Views\view_index.php on line 111.
+ 1 APPPATH\Views\view_index.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\PixelCore\\app\\Views\\view_index.php', 111)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\view_index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('view_index', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(9): view('view_index')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-21 05:08:02 --> ErrorException: Undefined variable $active
+[Method: GET, Route: /]
+in APPPATH\Views\view_index.php on line 111.
+ 1 APPPATH\Views\view_index.php(111): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $active', 'C:\\xampp\\htdocs\\PixelCore\\app\\Views\\view_index.php', 111)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\view_index.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('view_index', [], true)
+ 5 APPPATH\Controllers\Dashboard.php(9): view('view_index')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Dashboard->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

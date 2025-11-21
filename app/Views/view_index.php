@@ -18,12 +18,20 @@
             font-family: "Poppins", sans-serif;
         }
         .sidebar {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             width: 250px;
             min-height: 100vh;
             background: #4B763A;
             padding-top: 20px;
             position: fixed;
         }
+
+        .sidebar a {
+            text-decoration: none !important;
+        }
+
 
         .menu-item,
         .menu-item:hover,
@@ -38,7 +46,8 @@
         }
 
         .menu-item {
-            padding: 12px 25px;
+            padding: 20px 35px;
+            margin-bottom: 10px;
             font-size: 17px;
             font-weight: 600;
             cursor: pointer;
@@ -47,7 +56,7 @@
         .menu-item:hover, .menu-item.active {
             background: white;
             color: #325B2E !important; 
-            border-radius: 40px 0 0 40px;
+            border-radius: 0 40px 40px 0;
         }
 
         .dashboard-container {
@@ -104,28 +113,23 @@
     <!-- SIDEBAR -->
     <div class="sidebar">
         <div class="text-center mb-4">
-            <img src="<?= base_url('public/assets/image/feutech.png') ?>" width="120">
+            <img src="<?= base_url('assets/feutech.png') ?>" width="120">
         </div>
 
-        <div class="menu-item">
-            <a href="/" class="text-decoration-none" style="color: inherit;">DASHBOARD</a>
-        </div>
+        <a href="<?= base_url('dashboard') ?>"
+        class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
 
-        <div class="menu-item">
-            <a href="/equipments" class="text-decoration-none" style="color: inherit;">EQUIPMENTS</a>
-        </div>
+        <a href="<?= base_url('equipments') ?>"
+        class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENTS</a>
 
-        <div class="menu-item">
-            <a href="/reservations" class="text-decoration-none" style="color: inherit;">RESERVATIONS</a>
-        </div>
+        <a href="<?= base_url('reservations') ?>"
+        class="menu-item <?= ($active=='reservations') ? 'active' : '' ?>">RESERVATIONS</a>
 
-        <div class="menu-item">
-            <a href="/borrowed" class="text-decoration-none" style="color: inherit;">BORROWED</a>
-        </div>
+        <a href="<?= base_url('borrowed') ?>"
+        class="menu-item <?= ($active=='borrowed') ? 'active' : '' ?>">BORROWED</a>
 
-        <div class="menu-item">
-            <a href="/returned" class="text-decoration-none" style="color: inherit;">RETURNED</a>
-        </div>
+        <a href="<?= base_url('returned') ?>"
+        class="menu-item <?= ($active=='returned') ? 'active' : '' ?>">RETURNED</a>
 
 
         <!-- PROFILE (placeholder na muna waiting for backend) -->
