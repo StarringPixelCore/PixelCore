@@ -21,6 +21,14 @@
                     ✎
                 </label>
 
+                <!-- DELETE ICON -->
+                
+                <form action="<?= base_url('profile/remove-picture') ?>" method="POST">
+                    <button type="submit" class="profile-remove-icon">🗑</button>
+                </form>
+
+
+
                 <!-- HIDDEN INPUT FOR UPLOAD -->
                 <form action="<?= base_url('profile/update-picture') ?>" 
                       method="POST" enctype="multipart/form-data">
@@ -68,30 +76,6 @@
                 <p class="info-value"><?= esc($user['lastname']) ?></p>
             </div>
 
-        </div>
-
-        <!-- CHANGE PASSWORD -->
-        <div class="password-box">
-            <h3>Change Password</h3>
-
-            <form action="<?= base_url('profile/update-password') ?>" method="POST">
-                <div class="mb-3">
-                    <input type="password" class="form-control profile-input" 
-                           name="current_password" placeholder="Current Password">
-                </div>
-
-                <div class="mb-3">
-                    <input type="password" class="form-control profile-input" 
-                           name="new_password" placeholder="New Password">
-                </div>
-
-                <div class="mb-3">
-                    <input type="password" class="form-control profile-input" 
-                           name="confirm_password" placeholder="Confirm Password">
-                </div>
-
-                <button class="btn profile-save-btn" type="submit">Save Password</button>
-            </form>
         </div>
 
     </div>

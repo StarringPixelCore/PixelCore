@@ -26,5 +26,7 @@ $routes->get('profile', 'Auth::profile');
 
 $routes->post('profile/update-picture', 'Auth::updatePicture');
 $routes->post('profile/update-password', 'Auth::updatePassword');
+$routes->post('profile/remove-picture', 'Auth::removePicture');
+
 
 

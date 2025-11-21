@@ -51,7 +51,7 @@ class Auth extends Controller
             'lastname'       => $this->request->getPost('lastname'),
             'email'          => $this->request->getPost('email'),
             'password'       => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'role'           => 'Student',
+            'role'           => 'ITSO Personnel',
             'profile_picture'=> 'default.png' 
         ];
 
@@ -80,11 +80,11 @@ class Auth extends Controller
     $user = $userModel->find(session()->get('user_id'));
 
     if (!empty($user['profile_picture']) &&
-        file_exists(FCPATH . "uploads/profile/" . $user['profile_picture'])) {
+        file_exists(FCPATH . "public/uploads/profile/" . $user['profile_picture'])) {
 
-        $profilePicUrl = "uploads/profile/" . $user['profile_picture'];
+        $profilePicUrl = "public/uploads/profile/" . $user['profile_picture'];
     } else {
-        $profilePicUrl = "public/assets/default.png";
+        $profilePicUrl = "public/uploads/profile/default.jpg";
     }
 
     return view('view_profile', [
@@ -108,12 +108,12 @@ class Auth extends Controller
     if ($file->isValid() && !$file->hasMoved()) {
 
         $newName = $file->getRandomName();
-        $uploadPath = FCPATH . 'uploads/profile/';  // <-- in public/
+        $uploadPath = FCPATH . 'public/uploads/profile/';  
 
-        // Move to PUBLIC folder
+        
         $file->move($uploadPath, $newName);
 
-        // Resize
+       
         \Config\Services::image()
             ->withFile($uploadPath . $newName)
             ->fit(300, 300, 'center')
@@ -127,6 +127,36 @@ class Auth extends Controller
 
     return redirect()->to('/profile');
 }
+
+//delete profile picture
+
+    public function removePicture()
+    {
+        if (!session()->has('user_id')) {
+            return redirect()->to('/login');
+        }
+
+        $userId = session()->get('user_id');
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
+
+        $currentPic = $user['profile_picture'];
+
+        if ($currentPic !== 'default.jpg') {
+
+            $filePath = FCPATH . "public/uploads/profile/" . $currentPic;
+
+            if (file_exists($filePath)) {
+                unlink($filePath); // delete the image file
+            }
+        }
+
+        $userModel->update($userId, [
+            'profile_picture' => 'default.jpg'
+        ]);
+
+        return redirect()->to('/profile');
+    }
 
 
 //change password in profile center
