@@ -43,8 +43,6 @@
             overflow-y: auto;    
         }
 
-
-
         .menu-item,
         .menu-item:hover,
         .menu-item.active {
