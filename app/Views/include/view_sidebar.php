@@ -1,21 +1,25 @@
  <?php
     $isLoggedIn = session()->has('user_id');
     $user = null;
-    $profilePic = 'default.png';
-    $displayName = 'Guest User';
     $linkTarget = base_url('login');
 
     if ($isLoggedIn) {
         $userModel = new \App\Models\UserModel();
         $user = $userModel->find(session()->get('user_id'));
-
-        if ($user) {
-            $profilePic = $user['profile_picture'];
-            $displayName = $user['fullname'];
-            $linkTarget = base_url('profile');
-        }
     }
-    ?>
+
+    if ($user && !empty($user['profile_picture'])) {
+        // User has uploaded a profile picture
+        $profilePicUrl = base_url('writable/uploads/profile/' . $user['profile_picture']);
+        $displayName = $user['firstname'] . ' ' . $user['lastname'];
+        $linkTarget = base_url('profile');
+    } else {
+        // Use default
+        $profilePicUrl = base_url('public/assets/default.png');
+        $displayName = 'Guest User';
+    }
+?>
+
 
  
  <!-- SIDEBAR -->
@@ -34,10 +38,10 @@
     </nav>
 
 
-        <!-- PROFILE -->
+        <!-- PROFILE SECTION -->
        <a href="<?= $linkTarget ?>" class="profile-box-wrapper">
         <div class="profile-box">
-            <img src="<?= base_url('writable/uploads/profile/' . $profilePic) ?>" class="profile-img">
+            <img src="<?= $profilePicUrl ?>" class="profile-img">
             <p class="profile-name"><?= esc($displayName) ?></p>
         </div>
     </a>
