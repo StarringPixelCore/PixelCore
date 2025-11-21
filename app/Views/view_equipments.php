@@ -1,4 +1,3 @@
-
 <div class="wrapper">
     <?= view('include/view_head') ?>
     <?= view('include/view_sidebar') ?>
