@@ -15,7 +15,10 @@
         <!-- TOP BUTTONS -->
         <div class="login-top-buttons">
             <a href="<?= base_url('register') ?>" class="btn btn-register-small">REGISTER</a>
-            <img src="<?= base_url('public/assets/feutech.png') ?>" class="login-logo">
+            <a href="<?= base_url('dashboard') ?>">
+                <img src="<?= base_url('public/assets/feutech.png') ?>" class="login-logo">
+            </a>
+
         </div>
 
         <div class="login-panel">

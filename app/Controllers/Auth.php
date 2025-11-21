@@ -130,24 +130,20 @@ class Auth extends Controller
 
 //delete profile picture
 
-    public function removePicture()
+        public function removePicture()
     {
-        if (!session()->has('user_id')) {
-            return redirect()->to('/login');
-        }
-
         $userId = session()->get('user_id');
         $userModel = new UserModel();
+
         $user = $userModel->find($userId);
+        $oldPic = $user['profile_picture'];
 
-        $currentPic = $user['profile_picture'];
+       
+        $uploadPath = FCPATH . "public/uploads/profile/";
 
-        if ($currentPic !== 'default.jpg') {
-
-            $filePath = FCPATH . "public/uploads/profile/" . $currentPic;
-
-            if (file_exists($filePath)) {
-                unlink($filePath); // delete the image file
+        if (!empty($oldPic) && $oldPic !== 'default.jpg') {
+            if (file_exists($uploadPath . $oldPic)) {
+                unlink($uploadPath . $oldPic);  
             }
         }
 
@@ -155,7 +151,7 @@ class Auth extends Controller
             'profile_picture' => 'default.jpg'
         ]);
 
-        return redirect()->to('/profile');
+        return redirect()->to('/profile')->with('success', 'Profile picture removed.');
     }
 
 
