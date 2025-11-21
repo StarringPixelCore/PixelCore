@@ -24,7 +24,7 @@
 
             <form action="<?= base_url('login') ?>" method="POST">
 
-                <input type="text" name="student_number" class="form-control login-input" placeholder="Student Number">
+                <input type="text" name="id_number" class="form-control login-input" placeholder="ID Number">
 
                 <input type="email" name="email" class="form-control login-input" placeholder="Email">
 

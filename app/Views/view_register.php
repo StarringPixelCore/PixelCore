@@ -25,8 +25,8 @@
             <!-- REGISTER FORM -->
             <form action="<?= base_url('register') ?>" method="POST">
 
-                <input type="text" name="student_number" 
-                       class="form-control login-input" placeholder="Student Number">
+                <input type="text" name="id_number" 
+                       class="form-control login-input" placeholder="ID Number">
 
                 <input type="text" name="firstname" 
                        class="form-control login-input" placeholder="First Name">

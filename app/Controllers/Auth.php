@@ -46,7 +46,7 @@ class Auth extends Controller
         $userModel = new UserModel();
 
         $data = [
-            'student_number' => $this->request->getPost('student_number'),
+            'id_number' => $this->request->getPost('id_number'),
             'firstname'       => $this->request->getPost('firstname'),
             'lastname'       => $this->request->getPost('lastname'),
             'email'          => $this->request->getPost('email'),
