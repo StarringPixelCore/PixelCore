@@ -21,3 +21,10 @@ $routes->get('/register', 'Auth::register');
 $routes->post('/register', 'Auth::registerPost');
 $routes->get('/logout', 'Auth::logout');
 
+//for user profile
+$routes->get('profile', 'Auth::profile');  
+
+$routes->post('profile/update-picture', 'Auth::updatePicture');
+$routes->post('profile/update-password', 'Auth::updatePassword');
+
+

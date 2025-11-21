@@ -142,7 +142,7 @@
             font-weight: 500;
         }
 
-        /*LOGIN*/
+        /*LOGIN and REGISTER*/
     
         .login-wrapper {
             display: flex;
@@ -251,4 +251,103 @@
             font-size: 18px;
         }
 
+        /*PROFILE CENTER*/
+        .profile-container {
+            padding: 40px;
+            width: 100%;
+        }
+
+        .profile-header {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2d5c37;
+            margin-bottom: 30px;
+        }
+
+        .profile-top-section {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .profile-photo-wrapper {
+            position: relative;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            background: #ccc;
+        }
+
+        .profile-edit-icon {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: #fff;
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            border: 1px solid #333;
+            font-size: 18px;
+        }
+
+        .profile-name-section {
+            text-align: center;
+        }
+
+        .profile-name-display {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            background: #b44646;
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .user-info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 30px;
+            gap: 20px;
+        }
+
+        .info-label {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-value {
+            margin: 3px 0 10px;
+        }
+
+        .password-box {
+            margin-top: 40px;
+            padding: 25px;
+            background: #fff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.08);
+        }
+
+        .profile-input {
+            border: 2px solid #0f3d2e;
+            border-radius: 10px;
+            padding: 12px;
+        }
+
+        .profile-save-btn {
+            width: 100%;
+            background: #0f3d2e;
+            color: #fff;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 18px;
+        }
 

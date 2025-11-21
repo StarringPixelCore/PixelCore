@@ -1,10 +1,12 @@
+<?php if (!isset($active)) { $active = ''; } ?>
+
 <?php
     $isLoggedIn = session()->has('user_id');
     $user = null;
     $linkTarget = base_url('login');
 
-    // DEFAULT profile image
-    $profilePicUrl = base_url('public/assets/default.jpg');
+    
+    $profilePicUrl = base_url('assets/default.jpg');  
     $displayName = 'Guest User';
 
     if ($isLoggedIn) {
@@ -12,15 +14,17 @@
         $user = $userModel->find(session()->get('user_id'));
 
         if ($user) {
-           
+
+            // USER NAME
             $displayName = $user['firstname'] . ' ' . $user['lastname'];
             $linkTarget = base_url('profile');
 
-            
+            // USER UPLOADED PICTURE
             if (!empty($user['profile_picture'])) {
-                $uploadedPath = FCPATH . "writable/uploads/profile/" . $user['profile_picture']; 
 
-              
+                $uploadedPath = FCPATH . "writable/uploads/profile/" . $user['profile_picture'];
+
+                // FILE EXISTS?
                 if (is_file($uploadedPath)) {
                     $profilePicUrl = base_url("writable/uploads/profile/" . $user['profile_picture']);
                 }
@@ -29,8 +33,6 @@
 }
 ?>
 
-
- 
  <!-- SIDEBAR -->
   
     <div class="sidebar">
