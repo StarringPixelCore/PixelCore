@@ -6,8 +6,6 @@
 
 <?= $this->include('include/view_sidebar', ['active' => 'profile']) ?>
 
-
-    <!-- CONTENT -->
     <div class="profile-container">
 
         <h1 class="profile-header">User Profile</h1>
@@ -31,7 +29,7 @@
                 </form>
             </div>
 
-            <!-- NAME AND LOGOUT -->
+            <!-- NAME + LOGOUT -->
             <div class="profile-name-section">
                 <h2 class="profile-name-display">
                     <?= esc($user['firstname'] . ' ' . $user['lastname']) ?>
@@ -72,8 +70,7 @@
 
         </div>
 
-
-        <!-- CHANGE PASSWORD SECTION -->
+        <!-- CHANGE PASSWORD -->
         <div class="password-box">
             <h3>Change Password</h3>
 

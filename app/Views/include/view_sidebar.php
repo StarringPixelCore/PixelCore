@@ -1,46 +1,41 @@
 <?php if (!isset($active)) { $active = ''; } ?>
 
 <?php
-    $isLoggedIn = session()->has('user_id');
-    $user = null;
-    $linkTarget = base_url('login');
+$isLoggedIn = session()->has('user_id');
+$user = null;
+$linkTarget = base_url('login');
 
-    
-    $profilePicUrl = base_url('assets/default.jpg');  
-    $displayName = 'Guest User';
+// DEFAULT IMAGE (from public/uploads/profile/default.png)
+$profilePicUrl = base_url('public/uploads/profile/default.jpg');
+$displayName = 'Guest User';
 
-    if ($isLoggedIn) {
-        $userModel = new \App\Models\UserModel();
-        $user = $userModel->find(session()->get('user_id'));
+if ($isLoggedIn) {
+    $userModel = new \App\Models\UserModel();
+    $user = $userModel->find(session()->get('user_id'));
 
-        if ($user) {
+    if ($user) {
+        $displayName = $user['firstname'] . ' ' . $user['lastname'];
+        $linkTarget = base_url('profile');
 
-            // USER NAME
-            $displayName = $user['firstname'] . ' ' . $user['lastname'];
-            $linkTarget = base_url('profile');
+        // USER UPLOADED PICTURE
+        if (!empty($user['profile_picture'])) {
 
-            // USER UPLOADED PICTURE
-            if (!empty($user['profile_picture'])) {
+            $uploadedPath = FCPATH . "public/uploads/profile/" . $user['profile_picture'];
 
-                $uploadedPath = FCPATH . "writable/uploads/profile/" . $user['profile_picture'];
-
-                // FILE EXISTS?
-                if (is_file($uploadedPath)) {
-                    $profilePicUrl = base_url("writable/uploads/profile/" . $user['profile_picture']);
-                }
+            if (is_file($uploadedPath)) {
+                $profilePicUrl = base_url("public/uploads/profile/" . $user['profile_picture']);
             }
         }
+    }
 }
 ?>
 
- <!-- SIDEBAR -->
-  
-    <div class="sidebar">
-        <div class="text-center mb-4">
-            <img src="<?= base_url('public/assets/feutech.png') ?>" class="sidebar-logo">
-        </div>
+<div class="sidebar">
+    <div class="text-center mb-4">
+        <img src="<?= base_url('public/assets/feutech.png') ?>" class="sidebar-logo">
+    </div>
 
-        <nav class="sidebar-menu">
+    <nav class="sidebar-menu">
         <a href="<?= base_url('dashboard') ?>" class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
         <a href="<?= base_url('equipments') ?>" class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENTS</a>
         <a href="<?= base_url('reservations') ?>" class="menu-item <?= ($active=='reservations') ? 'active' : '' ?>">RESERVATIONS</a>
@@ -48,14 +43,12 @@
         <a href="<?= base_url('returned') ?>" class="menu-item <?= ($active=='returned') ? 'active' : '' ?>">RETURNED</a>
     </nav>
 
-
-        <!-- PROFILE SECTION -->
-       <a href="<?= $linkTarget ?>" class="profile-box-wrapper">
+    <!-- PROFILE BUTTON -->
+    <a href="<?= $linkTarget ?>" class="profile-box-wrapper">
         <div class="profile-box">
             <img src="<?= $profilePicUrl ?>" class="profile-img">
             <p class="profile-name"><?= esc($displayName) ?></p>
         </div>
     </a>
 
-    
-    </div>
+</div>
