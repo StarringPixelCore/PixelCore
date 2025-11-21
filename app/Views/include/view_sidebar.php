@@ -1,23 +1,32 @@
- <?php
+<?php
     $isLoggedIn = session()->has('user_id');
     $user = null;
     $linkTarget = base_url('login');
 
+    // DEFAULT profile image
+    $profilePicUrl = base_url('public/assets/default.jpg');
+    $displayName = 'Guest User';
+
     if ($isLoggedIn) {
         $userModel = new \App\Models\UserModel();
         $user = $userModel->find(session()->get('user_id'));
-    }
 
-    if ($user && !empty($user['profile_picture'])) {
-        // User has uploaded a profile picture
-        $profilePicUrl = base_url('writable/uploads/profile/' . $user['profile_picture']);
-        $displayName = $user['firstname'] . ' ' . $user['lastname'];
-        $linkTarget = base_url('profile');
-    } else {
-        // Use default
-        $profilePicUrl = base_url('public/assets/default.png');
-        $displayName = 'Guest User';
-    }
+        if ($user) {
+           
+            $displayName = $user['firstname'] . ' ' . $user['lastname'];
+            $linkTarget = base_url('profile');
+
+            
+            if (!empty($user['profile_picture'])) {
+                $uploadedPath = FCPATH . "writable/uploads/profile/" . $user['profile_picture']; 
+
+              
+                if (is_file($uploadedPath)) {
+                    $profilePicUrl = base_url("writable/uploads/profile/" . $user['profile_picture']);
+                }
+            }
+        }
+}
 ?>
 
 
