@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BORROWING</title>
-</head>
-<body>
-    
-</body>
-</html>
+<div class="wrapper">
+    <?= view('include/view_head') ?>
+    <?= view('include/view_sidebar') ?>
+    <div class="main-content" style="margin-left: 250px; padding: 20px;">
+        <!-- Page-specific content -->
+    </div>
+</div>
