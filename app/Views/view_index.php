@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Equipment Dashboard</title>
+    <title>ITSO Equipment Management System</title>
 
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,19 +18,31 @@
             font-family: "Poppins", sans-serif;
         }
         .sidebar {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             width: 250px;
-            min-height: 100vh;
+            height: 100vh;              
+            position: fixed;
+            left: 0;
+            top: 0;
+
             background: #4B763A;
             padding-top: 20px;
-            position: fixed;
+
+            display: flex;
+            flex-direction: column;
+
+            overflow-y: auto;           
+            overflow-x: hidden;
         }
 
         .sidebar a {
             text-decoration: none !important;
         }
+
+        .sidebar-content {
+            flex-grow: 1;
+            overflow-y: auto;    
+        }
+
 
 
         .menu-item,
@@ -46,7 +58,7 @@
         }
 
         .menu-item {
-            padding: 20px 35px;
+            padding: 19px 30px;
             margin-bottom: 10px;
             font-size: 17px;
             font-weight: 600;
@@ -60,8 +72,8 @@
         }
 
         .dashboard-container {
-            margin-left: 270px;
-            padding: 35px;
+            margin-left: 250px;
+            padding: 30px;
            
         }
 
