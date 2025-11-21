@@ -143,4 +143,112 @@
         }
 
         /*LOGIN*/
+    
+        .login-wrapper {
+            display: flex;
+            height: 100vh;
+        }
+
+        .login-left {
+            width: 55%;
+            background: url('../assets/login_bg.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+        }
+
+        .login-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(34, 82, 41, 0.55); 
+        }
+
         
+        .login-right {
+            width: 45%;
+            background: white;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        .login-top-buttons {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        
+        .btn-register-small {
+            border: 2px solid #0f3d2e;
+            padding: 6px 16px;
+            border-radius: 8px;
+            background: #fff;
+            font-size: 14px;
+            color: #0f3d2e;
+            transition: 0.2s;
+        }
+
+        .btn-register-small:hover {
+            background: #0f3d2e;
+            color: #fff;
+        }
+
+       
+        .login-logo {
+            width: 65px;
+        }
+
+        
+        .login-panel {
+            background: white;
+            padding: 40px 45px;
+            border-radius: 25px;
+            width: 80%;
+            
+        }
+
+        
+        .login-title {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0f3d2e;
+        }
+
+        .login-subtitle {
+            color: #333;
+        }
+
+        .login-input {
+            border: 2px solid #0f3d2e;
+            border-radius: 12px;
+            padding: 12px;
+            margin-bottom: 18px;
+        }
+
+        .login-forgot {
+            color: #b31212;
+            font-size: 14px;
+            float: right;
+            margin-bottom: 20px;
+            
+        }
+
+        
+        .login-btn {
+            background: #0f3d2e;
+            color: white;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 18px;
+        }
+
+

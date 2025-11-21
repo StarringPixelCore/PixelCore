@@ -81,3 +81,20 @@ in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
  7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-21 10:12:30 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "view_head.php"
+[Method: GET, Route: login]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('view_head.php')
+ 2 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('view_head', null, true)
+ 3 APPPATH\Views\view_login.php(1): CodeIgniter\View\View->include('view_head')
+ 4 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\view_login.php')
+ 5 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('view_login', [], true)
+ 7 APPPATH\Controllers\Auth.php(13): view('view_login')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->login()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-21 10:31:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
