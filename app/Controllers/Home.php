@@ -6,6 +6,6 @@ class Home extends BaseController
 {
     public function index(): string
     {
-        echoview('view_index');
+        return view('view_index');
     }
 }
