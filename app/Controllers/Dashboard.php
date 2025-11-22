@@ -9,6 +9,11 @@ class Dashboard extends BaseController
         return view('view_index', ['active' => 'dashboard']);
     }
 
+    public function users()
+    {
+        return view('view_users', ['active' => 'users']);
+    }
+
     public function equipments()
     {
         return view('view_equipments', ['active' => 'equipments']);
