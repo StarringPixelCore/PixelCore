@@ -16,23 +16,41 @@ class Auth extends Controller
     // Process login form
     public function loginPost()
     {
+        $session = session();
+        $validation = service('validation');
         $userModel = new UserModel();
 
-        $email = $this->request->getPost('email');
-        $password = $this->request->getPost('password');
+        // Get form data
+        $data = [
+            'id_number' => $this->request->getPost('id_number'),
+            'password' => $this->request->getPost('password')
+        ];
 
-        $user = $userModel->where('email', $email)->first();
-
-        if (!$user || !password_verify($password, $user['password'])) {
-            return redirect()->back()->with('error', 'Invalid email or password.');
+        // Validate using the 'login' rules - pass $data, not $user!
+        if (!$validation->run($data, 'login')) {
+            // Validation failed
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $validation->getErrors());
         }
 
-       
-        session()->set('user_id', $user['id']);
+        // Validation passed, get the user
+        $user = $userModel->where('id_number', $data['id_number'])->first();
+        
+        // User is valid, set session
+        $session->set([
+            'user_id' => $user['id'],
+            'id_number' => $user['id_number'],
+            'firstname' => $user['firstname'],
+            'lastname' => $user['lastname'],
+            'email' => $user['email'],
+            'role' => $user['role'],
+            'profile_picture' => $user['profile_picture'],
+            'logged_in' => true
+        ]);
 
         return redirect()->to('/dashboard');
     }
-
 
     // Show register page
     public function register()
@@ -51,8 +69,8 @@ class Auth extends Controller
             'lastname'       => $this->request->getPost('lastname'),
             'email'          => $this->request->getPost('email'),
             'password'       => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'role'           => 'ITSO Personnel',
-            'profile_picture'=> 'default.png' 
+            'role'           => 'USER', // Default role for public signups
+            'profile_picture'=> 'default.jpg' 
         ];
 
         $userModel->insert($data);
@@ -71,7 +89,7 @@ class Auth extends Controller
     //for profile view
 
    public function profile()
-{
+   {
     if (!session()->has('user_id')) {
         return redirect()->to('/login');
     }
@@ -99,7 +117,7 @@ class Auth extends Controller
 //profile picture edit
 
     public function updatePicture()
-{
+    {
     $userId = session()->get('user_id');
     $userModel = new UserModel();
 
@@ -131,7 +149,7 @@ class Auth extends Controller
 //delete profile picture
 
         public function removePicture()
-    {
+        {
         $userId = session()->get('user_id');
         $userModel = new UserModel();
 
