@@ -5,8 +5,12 @@ use CodeIgniter\Model;
 
 class UserModel extends Model
 {
-    protected $table = 'users';
+    protected $table = 'tblusers';
+
     protected $primaryKey = 'id';
+    protected $useAutoIncrement = true;
+
+    protected $returnType     = 'array';
 
     protected $allowedFields = [
         'id_number',
@@ -15,6 +19,12 @@ class UserModel extends Model
         'email',
         'password',
         'role',
-        'profile_picture'
+        'profile_picture',
+        'created_at',
+        'verify_token',
+        'is_verified'
     ];
+
+    protected bool $allowEmptyInserts = false;
+    protected bool $updateOnlyChanged = true;
 }
