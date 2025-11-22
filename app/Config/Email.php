@@ -33,12 +33,18 @@ class Email extends BaseConfig
     /**
      * SMTP Username
      */
-    public string $SMTPUser = 'starringpixelcore@gmail.com';
+    public string $SMTPUser = '';
 
     /**
      * SMTP Password
      */
-    public string $SMTPPass = 'pgkijckqbpaqkpmt';
+    public string $SMTPPass = '';
+
+    public function __construct()
+    {
+        $this->SMTPUser = getenv('email.SMTPUser');
+        $this->SMTPPass = getenv('email.SMTPPass');
+    }
 
     /**
      * SMTP Port
