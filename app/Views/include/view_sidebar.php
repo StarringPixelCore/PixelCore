@@ -37,6 +37,9 @@ if ($isLoggedIn) {
 
     <nav class="sidebar-menu">
         <a href="<?= base_url('dashboard') ?>" class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
+        <?php if (session()->get('logged_in') && session()->get('role') === 'ITSO PERSONNEL'): ?>
+            <a href="<?= base_url('users') ?>" class="menu-item <?= ($active=='users') ? 'active' : '' ?>">USERS</a>
+        <?php endif; ?>
         <a href="<?= base_url('equipments') ?>" class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENTS</a>
         <a href="<?= base_url('reservations') ?>" class="menu-item <?= ($active=='reservations') ? 'active' : '' ?>">RESERVATIONS</a>
         <a href="<?= base_url('borrowed') ?>" class="menu-item <?= ($active=='borrowed') ? 'active' : '' ?>">BORROWED</a>
@@ -52,3 +55,4 @@ if ($isLoggedIn) {
     </a>
 
 </div>
+
