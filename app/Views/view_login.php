@@ -25,11 +25,21 @@
             <h2 class="login-title">Welcome back to<br>ITSO</h2>
             <p class="login-subtitle">Log in to borrow or reserve school equipment.</p>
 
+        <?php
+            if(session('errors')):
+        ?>
+                <div class="alert alert-danger">
+                    <p>
+                        <?= implode('<br>', session('errors')); ?>
+                    </p>
+                </div>
+        <?php
+            endif;
+        ?>
+        
             <form action="<?= base_url('login') ?>" method="POST">
 
                 <input type="text" name="id_number" class="form-control login-input" placeholder="ID Number">
-
-                <input type="email" name="email" class="form-control login-input" placeholder="Email">
 
                 <input type="password" name="password" class="form-control login-input" placeholder="Password">
 
