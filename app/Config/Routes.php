@@ -22,6 +22,10 @@ $routes->post('/login', 'Auth::loginPost');
 $routes->get('/register', 'Auth::register');
 $routes->post('/register', 'Auth::registerPost');
 $routes->get('/logout', 'Auth::logout');
+$routes->get('/forgot-password', 'Auth::forgotPassword');
+$routes->post('/forgot-password', 'Auth::forgotPasswordPost');
+$routes->get('/reset-password/(:segment)', 'Auth::resetPassword/$1');
+$routes->post('/reset-password/(:segment)', 'Auth::resetPasswordPost/$1');
 
 // Routes for user profile
 $routes->get('profile', 'Auth::profile');  
@@ -37,5 +41,6 @@ $routes->get('users/view/(:num)', 'Users::view/$1');
 $routes->get('users/edit/(:num)', 'Users::edit/$1');
 $routes->post('users/update/(:num)', 'Users::update/$1');
 $routes->get('users/delete/(:num)', 'Users::delete/$1');
+$routes->get('users/verify/(:any)', 'Users::verify/$1');
 
 // Routes for ___
