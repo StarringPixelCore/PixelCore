@@ -24,6 +24,18 @@
             <h2 class="login-title">Create Your<br>Account</h2>
             <p class="login-subtitle">Register to access ITSO equipment services.</p>
 
+        <?php
+            if(session('errors')):
+        ?>
+                <div class="alert alert-danger">
+                    <p>
+                        <?= implode('<br>', session('errors')); ?>
+                    </p>
+                </div>
+        <?php
+            endif;
+        ?>
+
             <!-- REGISTER FORM -->
             <form action="<?= base_url('register') ?>" method="POST">
 
@@ -42,7 +54,7 @@
                 <input type="password" name="password" 
                        class="form-control login-input" placeholder="Password">
 
-                <input type="password" name="confirm_password" 
+                <input type="password" name="confirmpassword" 
                        class="form-control login-input" placeholder="Confirm Password">
 
                 <button type="submit" class="btn login-btn">REGISTER</button>

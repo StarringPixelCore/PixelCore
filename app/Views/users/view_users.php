@@ -16,7 +16,17 @@
                                 Add New User
                             </a>
                         </div>
-                        
+                        <?php
+                            if(session('success')):
+                        ?>
+                                <div class="alert alert-success">
+                                    <p>
+                                        <?= session('success'); ?>
+                                    </p>
+                                </div>
+                        <?php
+                            endif;
+                        ?>
                         <div class="table-responsive">
                             <table class="table table-striped table-hover">
                                 <thead class="table-success">
@@ -76,8 +86,8 @@
         </div>
     </div>
 </div>
-</body>
 
+<script src="<?= base_url('public/js/deleteModal.js'); ?>"></script>
 <?= $this->include('include/view_deleteModal'); ?>
-<script src="<?= base_url('public/assets/js/modal.js'); ?>"></script>
+</body>
 </html>

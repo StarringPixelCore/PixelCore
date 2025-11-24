@@ -36,6 +36,18 @@
         <?php
             endif;
         ?>
+
+        <?php
+            if(session('success')):
+        ?>
+                <div class="alert alert-success">
+                    <p>
+                        <?= session('success'); ?>
+                    </p>
+                </div>
+        <?php
+            endif;
+        ?>
         
             <form action="<?= base_url('login') ?>" method="POST">
 
@@ -43,7 +55,7 @@
 
                 <input type="password" name="password" class="form-control login-input" placeholder="Password">
 
-                <a href="<?= base_url('forgot_password') ?>" class="login-forgot">Forgot Password?</a>
+                <a href="<?= base_url('forgot-password') ?>" class="login-forgot">Forgot Password?</a>
 
                 <button type="submit" class="btn login-btn">LOGIN</button>
             </form>
