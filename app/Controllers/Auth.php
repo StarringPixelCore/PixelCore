@@ -3,9 +3,9 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
-use CodeIgniter\Controller;
+use App\Services\EmailService;
 
-class Auth extends Controller
+class Auth extends BaseController
 {
     // Show login page
     public function login()
@@ -61,23 +61,49 @@ class Auth extends Controller
     
     public function registerPost()
     {
+        helper('form');
+        $validation = service('validation');
         $userModel = new UserModel();
 
         $data = [
             'id_number' => $this->request->getPost('id_number'),
-            'firstname'       => $this->request->getPost('firstname'),
-            'lastname'       => $this->request->getPost('lastname'),
-            'email'          => $this->request->getPost('email'),
-            'password'       => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
-            'role'           => 'USER', // Default role for public signups
-            'profile_picture'=> 'default.jpg' 
+            'firstname' => $this->request->getPost('firstname'),
+            'lastname'  => $this->request->getPost('lastname'),
+            'email'     => $this->request->getPost('email'),
+            'password'  => $this->request->getPost('password'),
+            'confirmpassword' => $this->request->getPost('confirmpassword'),
+            'role'      => 'USER'
         ];
 
-        $userModel->insert($data);
+        if(! $validation->run($data, 'signup')){
+            $data['title'] = 'Sign Up';
+            $this->session->setFlashdata('errors', $validation->getErrors());
 
-        return redirect()->to('/login')->with('message', 'Account created! Please log in.');
+            return redirect()->to('/register');
+        }
+
+        $user = [
+            'id_number'       => $data['id_number'],
+            'firstname'       => $data['firstname'],
+            'lastname'        => $data['lastname'],
+            'email'           => $data['email'],
+            'password'        => password_hash($data['password'], PASSWORD_DEFAULT),
+            'role'            => 'USER', // default role for public sign ups
+            'profile_picture' => 'default.jpg',
+            'verify_token'    => bin2hex(random_bytes(16)),
+            'is_verified'     => 0,
+            'reset_token'     => null,
+            'reset_token_expires_at' => null
+        ];
+
+        $userModel->insert($user);
+
+        $emailService = new EmailService();
+        $emailService->sendVerificationEmail($user);
+
+        $this->session->setFlashdata('success', 'Successfully created your account! Please check your email to verify your account.');
+        return redirect()->to('/login');
     }
-
 
     // Logout
     public function logout()
@@ -86,7 +112,75 @@ class Auth extends Controller
         return redirect()->to('/login');
     }
 
-    //for profile view
+    public function forgotPassword()
+    {
+        return view('view_forgot_password');
+    }
+
+    // For handling forgot password form submission
+    public function forgotPasswordPost()
+    {
+        $email = $this->request->getPost('email');
+        $userModel = new UserModel();
+        $user = $userModel->where('email', $email)->first();
+
+        if ($user) {
+            $token = bin2hex(random_bytes(32));
+            $expiresAt = date('Y-m-d H:i:s', time() + 3600); // 1 hour expiry
+
+            $userModel->update($user['id'], [
+                'reset_token' => $token,
+                'reset_token_expires_at' => $expiresAt
+            ]);
+
+            $emailService = new EmailService();
+            $emailService->sendPasswordResetEmail($user, $token);
+        }
+
+        return redirect()->back()->with('success', 'Successfully sent a reset link to your email address.');
+    }
+
+    // For showing reset password form
+    public function resetPassword($token)
+    {
+        $userModel = new UserModel();
+        $user = $userModel->where('reset_token', $token)->first();
+
+        if (!$user || empty($user['reset_token_expires_at']) || strtotime($user['reset_token_expires_at']) < time()) {
+            return redirect()->to('/forgot-password')->with('error', 'The reset link is invalid or has expired.');
+        }
+
+        return view('view_reset_password', ['token' => $token]);
+    }
+
+    // For handling reset password form submission
+    public function resetPasswordPost($token)
+    {
+        $validation = service('validation');
+
+        if (! $validation->run($this->request->getPost(), 'resetPassword')) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $validation->getErrors());
+        }
+
+        $userModel = new UserModel();
+        $user = $userModel->where('reset_token', $token)->first();
+
+        if (!$user || empty($user['reset_token_expires_at']) || strtotime($user['reset_token_expires_at']) < time()) {
+            return redirect()->to('/forgot-password')->with('error', 'The reset link is invalid or has expired.');
+        }
+
+        $userModel->update($user['id'], [
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT),
+            'reset_token' => null,
+            'reset_token_expires_at' => null
+        ]);
+
+        return redirect()->to('/login')->with('success', 'Your password has been reset. You can now log in.');
+    }
+
+    // For profile view
 
    public function profile()
    {
@@ -112,9 +206,7 @@ class Auth extends Controller
     ]);
 }
 
-
-
-//profile picture edit
+    // For updating profile picture
 
     public function updatePicture()
     {
@@ -146,9 +238,9 @@ class Auth extends Controller
     return redirect()->to('/profile');
 }
 
-//delete profile picture
+    // For deleting profile picture
 
-        public function removePicture()
+    public function removePicture()
         {
         $userId = session()->get('user_id');
         $userModel = new UserModel();
@@ -173,33 +265,32 @@ class Auth extends Controller
     }
 
 
-//change password in profile center
+    // For changing password in profile center
 
-public function updatePassword()
-{
-    $userId = session()->get('user_id');
-    $userModel = new UserModel();
-    $user = $userModel->find($userId);
+    public function updatePassword()
+    {
+        $userId = session()->get('user_id');
+        $userModel = new UserModel();
+        $user = $userModel->find($userId);
 
-    $current = $this->request->getPost('current_password');
-    $new = $this->request->getPost('new_password');
-    $confirm = $this->request->getPost('confirm_password');
+        $current = $this->request->getPost('current_password');
+        $new = $this->request->getPost('new_password');
+        $confirm = $this->request->getPost('confirm_password');
 
-    if (!password_verify($current, $user['password'])) {
-        return redirect()->back()->with('error', 'Current password incorrect.');
+        if (!password_verify($current, $user['password'])) {
+            return redirect()->back()->with('error', 'Current password incorrect.');
+        }
+
+        if ($new !== $confirm) {
+            return redirect()->back()->with('error', 'Passwords do not match.');
+        }
+
+        $userModel->update($userId, [
+            'password' => password_hash($new, PASSWORD_DEFAULT)
+        ]);
+
+        return redirect()->back()->with('success', 'Password updated successfully.');
     }
-
-    if ($new !== $confirm) {
-        return redirect()->back()->with('error', 'Passwords do not match.');
-    }
-
-    $userModel->update($userId, [
-        'password' => password_hash($new, PASSWORD_DEFAULT)
-    ]);
-
-    return redirect()->back()->with('success', 'Password updated successfully.');
-}
-
 
 
 }
