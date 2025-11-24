@@ -1,0 +1,49 @@
+.custom-modal {
+  background-color: #4B763A; 
+  border-radius: 15px;
+  padding: 1.5rem;
+  border: none;
+}
+
+.icon-circle {
+  background: red;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cancel-btn {
+  background-color: white;
+  border: none;
+  color: black;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  background-color: #f2f2f2;
+}
+
+.confirm-btn {
+  background-color: #38b6ff;
+  border: none;
+  color: black;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.confirm-btn:hover {
+  background-color: #33db7f;
+  color: white;
+}
