@@ -22,7 +22,9 @@ class UserModel extends Model
         'profile_picture',
         'created_at',
         'verify_token',
-        'is_verified'
+        'is_verified',
+        'reset_token',
+        'reset_token_expires_at'
     ];
 
     protected bool $allowEmptyInserts = false;
