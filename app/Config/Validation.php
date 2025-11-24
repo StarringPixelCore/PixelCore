@@ -206,4 +206,25 @@ class Validation extends BaseConfig
         ]
     ];
 
+    public array $resetPassword = [
+        'password' => [
+            'label' => 'Password',
+            'rules' => 'required|min_length[8]|max_length[50]',
+            'errors' => [
+                'required' => 'Please enter a new password.',
+                'min_length' => 'Your password must be at least 8 characters long.',
+                'max_length' => 'Your password must not exceed 50 characters.'
+            ]
+        ],
+
+        'confirmpassword' => [
+            'label' => 'Confirm Password',
+            'rules' => 'required|matches[password]',
+            'errors' => [
+                'required' => 'Please confirm your password.',
+                'matches' => 'Your passwords do not match. Please try again.'
+            ]
+        ]
+    ];
+
 }
