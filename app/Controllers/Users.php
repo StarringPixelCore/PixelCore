@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 
+use App\Services\EmailService;
+
 class Users extends BaseController {
     
     /**
@@ -27,8 +29,9 @@ class Users extends BaseController {
         }
 
         $usersModel = model('UserModel');
-        $usersModel->orderBy('lastname');
-        $queryResult = $usersModel->paginate($perpage);
+        $queryResult = $usersModel
+            ->orderBy('lastname', 'ASC')
+            ->paginate($perpage);
 
         $data = array(
             'title' => 'Users List',
@@ -98,7 +101,8 @@ class Users extends BaseController {
         $usersModel->insert($user);
         $this->session->setFlashdata('success', 'Successfully added a new user account.');
 
-        // Set email contents 
+        $emailService = new EmailService();
+        $emailService->sendVerificationEmail($user);
 
         return redirect()->to('users');
     }
@@ -186,6 +190,7 @@ class Users extends BaseController {
             'id_number' => $this->request->getPost('id_number'),
             'firstname' => $this->request->getPost('firstname'),
             'lastname' => $this->request->getPost('lastname'),
+            'password' => $this->request->getPost('password'),
             'email' => $this->request->getPost('email'),
             'role' => $this->request->getPost('role')
         );
