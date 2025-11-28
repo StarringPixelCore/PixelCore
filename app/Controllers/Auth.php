@@ -206,6 +206,18 @@ class Auth extends BaseController
     ]);
 }
 
+    // Show change password form
+    public function changePassword()
+    {
+        if (!session()->has('user_id')) {
+            return redirect()->to('/login');
+        }
+
+        return view('view_change_password', [
+            'active' => 'profile'
+        ]);
+    }
+
     // For updating profile picture
 
     public function updatePicture()
@@ -269,24 +281,40 @@ class Auth extends BaseController
 
     public function updatePassword()
     {
+        if (!session()->has('user_id')) {
+            return redirect()->to('/login');
+        }
+
         $userId = session()->get('user_id');
         $userModel = new UserModel();
         $user = $userModel->find($userId);
 
-        $current = $this->request->getPost('current_password');
-        $new = $this->request->getPost('new_password');
-        $confirm = $this->request->getPost('confirm_password');
-
-        if (!password_verify($current, $user['password'])) {
-            return redirect()->back()->with('error', 'Current password incorrect.');
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found.');
         }
 
-        if ($new !== $confirm) {
-            return redirect()->back()->with('error', 'Passwords do not match.');
+        $validation = service('validation');
+        $data = [
+            'current_password' => $this->request->getPost('current_password'),
+            'new_password' => $this->request->getPost('new_password'),
+            'confirm_password' => $this->request->getPost('confirm_password')
+        ];
+
+        // Validate using validation rules
+        if (!$validation->run($data, 'changePassword')) {
+            return redirect()->back()
+                ->withInput()
+                ->with('errors', $validation->getErrors());
         }
 
+        // Verify current password
+        if (!password_verify($data['current_password'], $user['password'])) {
+            return redirect()->back()->with('error', 'Current password is incorrect.');
+        }
+
+        // Update password
         $userModel->update($userId, [
-            'password' => password_hash($new, PASSWORD_DEFAULT)
+            'password' => password_hash($data['new_password'], PASSWORD_DEFAULT)
         ]);
 
         return redirect()->back()->with('success', 'Password updated successfully.');
