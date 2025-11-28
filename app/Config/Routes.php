@@ -29,6 +29,7 @@ $routes->post('/reset-password/(:segment)', 'Auth::resetPasswordPost/$1');
 
 // Routes for user profile
 $routes->get('profile', 'Auth::profile');  
+$routes->get('profile/change-password', 'Auth::changePassword');
 $routes->post('profile/update-picture', 'Auth::updatePicture');
 $routes->post('profile/update-password', 'Auth::updatePassword');
 $routes->post('profile/remove-picture', 'Auth::removePicture');
@@ -52,3 +53,9 @@ $routes->get('equipment/edit/(:num)', 'Equipment::edit/$1');
 $routes->post('equipment/update/(:num)', 'Equipment::update/$1');
 $routes->get('equipment/delete/(:num)', 'Equipment::delete/$1');
 $routes->get('equipment/reactivate/(:num)', 'Equipment::reactivate/$1');
+
+// Routes for Borrow controller
+$routes->get('borrow', 'Borrow::index');
+$routes->post('borrow/submit', 'Borrow::submit');
+$routes->get('borrow/received/(:num)', 'Borrow::received/$1');
+$routes->get('borrow/returned/(:num)', 'Borrow::returned/$1');
