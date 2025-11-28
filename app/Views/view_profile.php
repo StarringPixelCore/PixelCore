@@ -43,7 +43,12 @@
                     <?= esc($user['firstname'] . ' ' . $user['lastname']) ?>
                 </h2>
 
-                <a href="<?= base_url('logout') ?>" class="logout-btn">Logout</a>
+                <div class="d-flex flex-column gap-2" style="margin-top: 10px;">
+                    <a href="<?= base_url('profile/change-password') ?>" class="logout-btn" style="background: #4B763A; text-align: center;">
+                        Change Password
+                    </a>
+                    <a href="<?= base_url('logout') ?>" class="logout-btn">Logout</a>
+                </div>
             </div>
 
         </div>
