@@ -74,7 +74,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td colspan="4" class="text-center">No data yet</td></tr>
+                        <?php if (!empty($recentBorrowings)): ?>
+                            <?php foreach ($recentBorrowings as $borrow): ?>
+                                <tr>
+                                    <td><?= esc($borrow['firstname'] . ' ' . $borrow['lastname']) ?></td>
+                                    <td><?= esc($borrow['equipment_name']) ?></td>
+                                    <td><?= date('M d, Y', strtotime($borrow['borrow_date'])) ?></td>
+                                    <td>
+                                        <span class="badge bg-<?= $borrow['status'] === 'Pending' ? 'warning' : ($borrow['status'] === 'Received' ? 'info' : 'success') ?>">
+                                            <?= esc($borrow['status']) ?>
+                                        </span>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="4" class="text-center">No data yet</td></tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
@@ -90,7 +105,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr><td colspan="3" class="text-center">No data yet</td></tr>
+                        <?php if (!empty($lowStockItems)): ?>
+                            <?php foreach ($lowStockItems as $item): ?>
+                                <tr>
+                                    <td><?= esc($item['equipment_name']) ?></td>
+                                    <td>
+                                        <span class="badge bg-<?= $item['available_count'] > 0 ? 'warning' : 'danger' ?>">
+                                            <?= $item['available_count'] ?>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a href="<?= base_url('equipment/view/' . $item['id']) ?>" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-eye"></i> View
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr><td colspan="3" class="text-center">No low stock items</td></tr>
+                        <?php endif; ?>
                     </tbody>
                 </table>
             </div>
