@@ -31,10 +31,37 @@ class EmailService
         $message = "Hello, ".$user['firstname']." ".$user['lastname'].",<br><br>
         We received a request to reset your password. Click the link below to choose a new password. This link will expire in 1 hour.<br><br>
         <a href=".$resetUrl.">Click here to reset your password</a><br><br>
-        If you did not request this, please ignore this email.";
+        If you did not request this, please ignore this email.<br><br>
+        - From FEU Institute of Technology";
 
         $this->email->setTo($user['email']);
         $this->email->setSubject('Password Reset Request');
+        $this->email->setMessage($message);
+
+        return $this->email->send();
+    }
+
+    public function sendBorrowConfirmationEmail(array $user): bool
+    {
+        $message = "Hello, ".$user['firstname']." ".$user['lastname'].",<br><br>
+        You have borrowed an equipment. Please go to the IT Services Office to confirm and claim your equipment.<br><br>
+        - From FEU Institute of Technology";
+
+        $this->email->setTo($user['email']);
+        $this->email->setSubject('Equipment Borrow Confirmation');
+        $this->email->setMessage($message);
+
+        return $this->email->send();
+    }
+
+    public function sendReturnConfirmationEmail(array $user, string $equipmentName): bool
+    {
+        $message = "Hello, ".$user['firstname']." ".$user['lastname'].",<br><br>
+        This is to acknowledge that your borrowed equipment (".$equipmentName.") has been returned.<br><br>
+        - From FEU Institute of Technology";
+
+        $this->email->setTo($user['email']);
+        $this->email->setSubject('Equipment Return Confirmation');
         $this->email->setMessage($message);
 
         return $this->email->send();
