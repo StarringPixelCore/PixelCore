@@ -4,7 +4,7 @@
 <body>
 <div class="wrapper">
     <?= view('include/view_sidebar', ['active' => $active ?? 'users']) ?>
-    <div class="main-content">
+    <div class="dashboard-container">
         <div class="container-fluid">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8 col-lg-6">
