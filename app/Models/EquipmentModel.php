@@ -55,11 +55,20 @@ class EquipmentModel extends Model
         return $this->where('status', 'Active')->countAllResults();
     }
 
-    // Helper method to get available count
+    // Helper method to get available count (number of equipment types)
     public function getAvailableCount()
     {
         return $this->where('status', 'Active')
                     ->where('available_count >', 0)
                     ->countAllResults();
+    }
+
+    // Helper method to get total available items (sum of available_count)
+    public function getTotalAvailableItems()
+    {
+        $result = $this->selectSum('available_count')
+                      ->where('status', 'Active')
+                      ->first();
+        return (int) ($result['available_count'] ?? 0);
     }
 }

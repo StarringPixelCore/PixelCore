@@ -29,11 +29,10 @@ class Equipment extends BaseController
      */
     public function index($perpage = 10)
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         $equipmentModel = model('EquipmentModel');
         $queryResult = $equipmentModel
@@ -56,11 +55,10 @@ class Equipment extends BaseController
      */
     public function add()
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         helper('form');
         $data = [
@@ -76,11 +74,10 @@ class Equipment extends BaseController
      */
     public function insert()
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         $validation = service('validation');
         $equipmentModel = model('EquipmentModel');
@@ -109,11 +106,10 @@ class Equipment extends BaseController
      */
     public function view($id)
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         $equipmentModel = model('EquipmentModel');
         $equipment = $equipmentModel->find($id);
@@ -142,11 +138,10 @@ class Equipment extends BaseController
      */
     public function edit($id)
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         $equipmentModel = model('EquipmentModel');
         $equipment = $equipmentModel->find($id);
@@ -171,11 +166,10 @@ class Equipment extends BaseController
      */
     public function update($id)
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         $validation = service('validation');
         $equipmentModel = model('EquipmentModel');
@@ -210,11 +204,10 @@ class Equipment extends BaseController
      */
     public function delete($id)
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         $equipmentModel = model('EquipmentModel');
         $equipment = $equipmentModel->find($id);
@@ -236,11 +229,10 @@ class Equipment extends BaseController
      */
     public function reactivate($id)
     {
-        // Temporarily disable access checks to make this page public
-        // $accessCheck = $this->checkAccess();
-        // if ($accessCheck !== null) {
-        //     return $accessCheck;
-        // }
+        $accessCheck = $this->checkAccess();
+        if ($accessCheck !== null) {
+            return $accessCheck;
+        }
 
         $equipmentModel = model('EquipmentModel');
         $equipment = $equipmentModel->find($id);

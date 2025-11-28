@@ -1,19 +1,22 @@
-<?= $this->include('include/view_head'); ?>
-
+<?= $this->include('include/view_head', ['title' => $title ?? 'View Equipment']) ?>
 
 <body>
-
 <div class="wrapper">
-    <?= view('include/view_sidebar', ['active' => 'equipments']) ?>
+    <?= view('include/view_sidebar', ['active' => $active ?? 'equipments']) ?>
     
-    <div class="main-content">
-        <!-- PAGE HEADER -->
-        <div class="page-header">
-            <h1 class="page-title">Equipment Management</h1>
-            <p class="page-subtitle">Manage all school equipment and gadgets</p>
+    <div class="dashboard-container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h1 class="dash-title">Equipment Details</h1>
+                <p class="dash-subtitle">View equipment information</p>
+            </div>
+            <div>
+                <a href="<?= base_url('equipment') ?>" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+            </div>
         </div>
 
-        <!-- SUCCESS/ERROR MESSAGES -->
         <?php if (session('success')): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <?= session('success') ?>
@@ -28,85 +31,61 @@
             </div>
         <?php endif; ?>
 
-        <!-- ADD BUTTON -->
-        <div class="content-actions mb-4">
-            <a href="<?= base_url('equipment/add') ?>" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i> Add New Equipment
-            </a>
-        </div>
-
-        <!-- EQUIPMENT TABLE -->
-        <div class="content-card">
-            <table class="table table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th>ID</th>
-                        <th>Equipment Name</th>
-                        <th>Category</th>
-                        <th>Qty</th>
-                        <th>Available</th>
-                        <th>Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($equipments)): ?>
-                        <?php foreach ($equipments as $equipment): ?>
+        <?php if (!empty($equipment)): ?>
+            <div class="content-card" style="background: white; padding: 30px; border-radius: 12px; box-shadow: 0px 3px 8px rgba(0,0,0,0.15);">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <h5 class="mb-3" style="color: #4B763A; font-weight: 600;">Equipment Information</h5>
+                        <table class="table table-borderless">
                             <tr>
+                                <td style="width: 40%; font-weight: 600;">Equipment ID:</td>
                                 <td><?= $equipment['id'] ?></td>
-                                <td>
-                                    <strong><?= esc($equipment['equipment_name']) ?></strong>
-                                </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Equipment Name:</td>
+                                <td><strong><?= esc($equipment['equipment_name']) ?></strong></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Category:</td>
                                 <td><?= esc($equipment['category']) ?></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Total Quantity:</td>
                                 <td><?= $equipment['quantity'] ?></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Available Count:</td>
                                 <td>
-                                    <span class="badge bg-<?= $equipment['available_count'] > 0 ? 'success' : 'danger' ?>">
+                                    <span class="badge bg-<?= $equipment['available_count'] > 0 ? 'success' : 'danger' ?> fs-6">
                                         <?= $equipment['available_count'] ?>
                                     </span>
                                 </td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600;">Status:</td>
                                 <td>
-                                    <span class="badge bg-<?= $equipment['status'] === 'Active' ? 'success' : 'warning' ?>">
-                                        <?= $equipment['status'] ?>
+                                    <span class="badge bg-<?= $equipment['status'] === 'Active' ? 'success' : 'warning' ?> fs-6">
+                                        <?= esc($equipment['status']) ?>
                                     </span>
                                 </td>
-                                <td>
-                                    <div class="action-buttons">
-                                        <a href="<?= base_url('equipment/edit/' . $equipment['id']) ?>" class="btn btn-sm btn-warning" title="Edit">
-                                            <i class="bi bi-pencil"></i>
-                                        </a>
-                                        <?php if ($equipment['status'] === 'Active'): ?>
-                                            <a href="<?= base_url('equipment/delete/' . $equipment['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')" title="Deactivate">
-                                                <i class="bi bi-trash"></i>
-                                            </a>
-                                        <?php else: ?>
-                                            <a href="<?= base_url('equipment/reactivate/' . $equipment['id']) ?>" class="btn btn-sm btn-success" title="Reactivate">
-                                                <i class="bi bi-arrow-counterclockwise"></i>
-                                            </a>
-                                        <?php endif; ?>
-                                    </div>
-                                </td>
                             </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="7" class="text-center py-4">
-                                <p class="text-muted">No equipment found. <a href="<?= base_url('equipment/add') ?>">Add one now</a></p>
-                            </td>
-                        </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- PAGINATION -->
-        <?php if (!empty($pager)): ?>
-            <div class="pagination-wrapper mt-4">
-                <?= $pager->links() ?>
+                            <tr>
+                                <td style="font-weight: 600;">Date Added:</td>
+                                <td><?= !empty($equipment['created_at']) ? date('M d, Y h:i A', strtotime($equipment['created_at'])) : 'N/A' ?></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="alert alert-warning">
+                Equipment not found.
             </div>
         <?php endif; ?>
-
     </div>
 </div>
 
+<script src="<?= base_url('public/js/deleteModal.js'); ?>"></script>
+<?= $this->include('include/view_deleteModal'); ?>
 </body>
 </html>

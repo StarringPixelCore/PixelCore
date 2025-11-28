@@ -5,7 +5,7 @@
 <div class="wrapper">
     <?= view('include/view_sidebar', ['active' => 'equipments']) ?>
     
-    <div class="main-content">
+    <div class="dashboard-container">
         <!-- PAGE HEADER -->
         <div class="page-header">
             <h1 class="page-title">Add New Equipment</h1>

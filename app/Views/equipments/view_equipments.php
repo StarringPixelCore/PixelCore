@@ -11,7 +11,7 @@
 <div class="wrapper">
     <?= view('include/view_sidebar', ['active' => 'equipments']) ?>
     
-    <div class="main-content">
+    <div class="dashboard-container">
         <!-- PAGE HEADER -->
         <div class="page-header">
             <h1 class="page-title">Equipment Management</h1>
@@ -76,11 +76,19 @@
                                 </td>
                                 <td>
                                     <div class="action-buttons">
+                                        <a href="<?= base_url('equipment/view/' . $equipment['id']) ?>" class="btn btn-sm btn-outline-primary" title="View">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
                                         <a href="<?= base_url('equipment/edit/' . $equipment['id']) ?>" class="btn btn-sm btn-warning" title="Edit">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <?php if ($equipment['status'] === 'Active'): ?>
-                                            <a href="<?= base_url('equipment/delete/' . $equipment['id']) ?>" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')" title="Deactivate">
+                                            <a href="#" class="btn btn-sm btn-danger delete-btn" 
+                                               data-bs-toggle="modal" 
+                                               data-bs-target="#confirmDeleteModal" 
+                                               data-url="<?= base_url('equipment/delete/' . $equipment['id']) ?>"
+                                               data-name="<?= esc($equipment['equipment_name']) ?>"
+                                               title="Deactivate">
                                                 <i class="bi bi-trash"></i>
                                             </a>
                                         <?php else: ?>
@@ -113,5 +121,7 @@
     </div>
 </div>
 
+<script src="<?= base_url('public/js/deleteModal.js'); ?>"></script>
+<?= $this->include('include/view_deleteModal'); ?>
 </body>
 </html>
