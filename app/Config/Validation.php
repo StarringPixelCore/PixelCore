@@ -298,4 +298,62 @@ class Validation extends BaseConfig
             ]
         ]
     ];
+
+    public array $borrowSubmit = [
+        'room_number' => [
+            'label' => 'Room Number',
+            'rules' => 'required|min_length[3]|max_length[50]',
+            'errors' => [
+                'required' => 'Please enter the room number.',
+                'min_length' => 'Room number must be at least 3 character long.',
+                'max_length' => 'Room number must not exceed 50 characters.'
+            ]
+        ],
+
+        'borrow_date' => [
+            'label' => 'Borrow Date',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Please select a borrow date.',
+                'valid_date' => 'Please enter a valid date.'
+            ]
+        ],
+
+        'borrow_time' => [
+            'label' => 'Borrow Time',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Please select a borrow time.'
+            ]
+        ]
+    ];
+
+    public array $changePassword = [
+        'current_password' => [
+            'label' => 'Current Password',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Please enter your current password.'
+            ]
+        ],
+
+        'new_password' => [
+            'label' => 'New Password',
+            'rules' => 'required|min_length[8]|max_length[50]',
+            'errors' => [
+                'required' => 'Please enter a new password.',
+                'min_length' => 'Your new password must be at least 8 characters long.',
+                'max_length' => 'Your new password must not exceed 50 characters.'
+            ]
+        ],
+
+        'confirm_password' => [
+            'label' => 'Confirm Password',
+            'rules' => 'required|matches[new_password]',
+            'errors' => [
+                'required' => 'Please confirm your new password.',
+                'matches' => 'The new password and confirmation password do not match.'
+            ]
+        ]
+    ];
 }
