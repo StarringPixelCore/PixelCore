@@ -43,4 +43,12 @@ $routes->post('users/update/(:num)', 'Users::update/$1');
 $routes->get('users/delete/(:num)', 'Users::delete/$1');
 $routes->get('users/verify/(:any)', 'Users::verify/$1');
 
-// Routes for ___
+// Routes for Equipment controller
+$routes->get('equipment', 'Equipment::index');
+$routes->get('equipment/add', 'Equipment::add');
+$routes->post('equipment/insert', 'Equipment::insert');
+$routes->get('equipment/view/(:num)', 'Equipment::view/$1');
+$routes->get('equipment/edit/(:num)', 'Equipment::edit/$1');
+$routes->post('equipment/update/(:num)', 'Equipment::update/$1');
+$routes->get('equipment/delete/(:num)', 'Equipment::delete/$1');
+$routes->get('equipment/reactivate/(:num)', 'Equipment::reactivate/$1');

@@ -227,4 +227,75 @@ class Validation extends BaseConfig
         ]
     ];
 
+    public array $equipment = [
+        'equipment_name' => [
+            'label' => 'Equipment Name',
+            'rules' => 'required|min_length[3]|max_length[255]',
+            'errors' => [
+                'required' => 'Please enter the equipment name.',
+                'min_length' => 'Equipment name must be at least 3 characters long.',
+                'max_length' => 'Equipment name must not exceed 255 characters.'
+            ]
+        ],
+
+        'category' => [
+            'label' => 'Category',
+            'rules' => 'required|in_list[Laptop,DLP,Cable,Remote Control,Keyboard/Mouse,Drawing Tablet,Speaker Set,Webcam,Extension Cord,Crimping Tool,Cable Tester,Lab Room Key,Other]',
+            'errors' => [
+                'required' => 'Please select a category.',
+                'in_list' => 'Please select a valid category.'
+            ]
+        ],
+
+        'quantity' => [
+            'label' => 'Quantity',
+            'rules' => 'required|integer|greater_than[0]',
+            'errors' => [
+                'required' => 'Please enter the quantity.',
+                'integer' => 'Quantity must be a whole number.',
+                'greater_than' => 'Quantity must be greater than 0.'
+            ]
+        ]
+    ];
+
+    public array $equipmentEdit = [
+        'equipment_name' => [
+            'label' => 'Equipment Name',
+            'rules' => 'required|min_length[3]|max_length[255]',
+            'errors' => [
+                'required' => 'Please enter the equipment name.',
+                'min_length' => 'Equipment name must be at least 3 characters long.',
+                'max_length' => 'Equipment name must not exceed 255 characters.'
+            ]
+        ],
+
+        'category' => [
+            'label' => 'Category',
+            'rules' => 'required|in_list[Laptop,DLP,Cable,Remote Control,Keyboard/Mouse,Drawing Tablet,Speaker Set,Webcam,Extension Cord,Crimping Tool,Cable Tester,Lab Room Key,Other]',
+            'errors' => [
+                'required' => 'Please select a category.',
+                'in_list' => 'Please select a valid category.'
+            ]
+        ],
+
+        'quantity' => [
+            'label' => 'Quantity',
+            'rules' => 'required|integer|greater_than[0]',
+            'errors' => [
+                'required' => 'Please enter the quantity.',
+                'integer' => 'Quantity must be a whole number.',
+                'greater_than' => 'Quantity must be greater than 0.'
+            ]
+        ],
+
+        'available_count' => [
+            'label' => 'Available Count',
+            'rules' => 'required|integer|greater_than_equal_to[0]',
+            'errors' => [
+                'required' => 'Please enter the available count.',
+                'integer' => 'Available count must be a whole number.',
+                'greater_than_equal_to' => 'Available count must be 0 or greater.'
+            ]
+        ]
+    ];
 }
