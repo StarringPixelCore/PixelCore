@@ -36,14 +36,26 @@ if ($isLoggedIn) {
     </div>
 
     <nav class="sidebar-menu">
-        <a href="<?= base_url('dashboard') ?>" class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
-        <?php if (session()->get('logged_in') && session()->get('role') === 'ITSO PERSONNEL'): ?>
-            <a href="<?= base_url('users') ?>" class="menu-item <?= ($active=='users') ? 'active' : '' ?>">USERS</a>
+        <?php 
+        $userRole = session()->get('role');
+        $isStudentOrAssociate = in_array($userRole, ['STUDENT', 'ASSOCIATE']);
+        $isITSO = ($userRole === 'ITSO PERSONNEL');
+        
+        if ($isStudentOrAssociate): 
+        ?>
+            <!-- Menu for STUDENT and ASSOCIATE -->
+            <a href="<?= base_url('borrow') ?>" class="menu-item <?= ($active=='borrow') ? 'active' : '' ?>">BORROW</a>
+        <?php else: ?>
+            <!-- Menu for ITSO PERSONNEL and other roles -->
+            <a href="<?= base_url('dashboard') ?>" class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
+            <?php if ($isITSO): ?>
+                <a href="<?= base_url('users') ?>" class="menu-item <?= ($active=='users') ? 'active' : '' ?>">USERS</a>
+            <?php endif; ?>
+            <a href="<?= base_url('equipment') ?>" class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENTS</a>
+            <a href="<?= base_url('reservations') ?>" class="menu-item <?= ($active=='reservations') ? 'active' : '' ?>">RESERVATIONS</a>
+            <a href="<?= base_url('borrowed') ?>" class="menu-item <?= ($active=='borrowed') ? 'active' : '' ?>">BORROWED</a>
+            <a href="<?= base_url('returned') ?>" class="menu-item <?= ($active=='returned') ? 'active' : '' ?>">RETURNED</a>
         <?php endif; ?>
-        <a href="<?= base_url('equipments') ?>" class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENTS</a>
-        <a href="<?= base_url('reservations') ?>" class="menu-item <?= ($active=='reservations') ? 'active' : '' ?>">RESERVATIONS</a>
-        <a href="<?= base_url('borrowed') ?>" class="menu-item <?= ($active=='borrowed') ? 'active' : '' ?>">BORROWED</a>
-        <a href="<?= base_url('returned') ?>" class="menu-item <?= ($active=='returned') ? 'active' : '' ?>">RETURNED</a>
     </nav>
 
     <!-- PROFILE BUTTON -->
