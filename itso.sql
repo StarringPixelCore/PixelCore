@@ -16,6 +16,11 @@ CREATE TABLE `tblusers` (
   UNIQUE KEY `email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+INSERT INTO `tblusers` (`id`, `id_number`, `firstname`, `lastname`, `email`, `password`, `role`, `profile_picture`, `created_at`, `verify_token`, `is_verified`, `reset_token`, `reset_token_expires_at`) VALUES
+(1, '202511111', 'ITSO', 'Personnel', 'riacruzit0049@gmail.com', '$2y$10$1tVkGlfkDmw1t6I1VwkRi.3EFPX/M7tLu/KkBFIinsC3LlDxJUEdW', 'ITSO PERSONNEL', 'default.jpg', '2025-11-29 22:44:45', 'da09202ae8899cad7374f80ff3fdf06d', 0, NULL, NULL),
+(2, '202522222', 'Associate', 'Demo', 'dummy1.dumd0m@gmail.com', '$2y$10$5AESFPgPtIv0J6A.1JFoye7UJo//GfRFy0wJ2vi8wionrP0YIIvH6', 'ASSOCIATE', 'default.jpg', '2025-11-29 22:47:31', '24a5834776442b4ef61546720d7f4e39', 0, NULL, NULL),
+(3, '202533333', 'Student', 'Demo', 'fudgechocooreo@gmail.com', '$2y$10$jr0/Ky.z6he..Adp26bk2.REwmXgZfcqOTkOc9ai8h8gla4yVYcLa', 'STUDENT', 'default.jpg', '2025-11-29 22:49:10', '6c2e4b4fddc2a94e6a66c27be4c7cd5e', 0, NULL, NULL);
+
 CREATE TABLE `tblequipment` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `equipment_name` varchar(255) NOT NULL,
