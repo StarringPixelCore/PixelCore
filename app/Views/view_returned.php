@@ -5,8 +5,17 @@
     <?= view('include/view_sidebar', ['active' => $active ?? 'returned']) ?>
     
     <div class="dashboard-container">
-        <h1 class="dash-title">Returned Equipment</h1>
-        <p class="dash-subtitle">List of completed equipment returns</p>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h1 class="dash-title">Returned Equipment</h1>
+                <p class="dash-subtitle">List of completed equipment returns</p>
+            </div>
+            <div class="btn-group" role="group">
+                <a href="<?= base_url('reservations/returned') ?>" class="btn btn-outline-primary">
+                    <i class="bi bi-clock-history"></i> View Returned Reservations
+                </a>
+            </div>
+        </div>
 
         <?php if (session('success')): ?>
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -33,6 +42,7 @@
                                 <th>ID Number</th>
                                 <th>Name</th>
                                 <th>Equipment</th>
+                                <th>Accessory</th>
                                 <th>Room Number</th>
                                 <th>Borrow Date</th>
                                 <th>Borrow Time</th>
@@ -46,6 +56,7 @@
                                     <td><?= esc($borrow['id_number']) ?></td>
                                     <td><?= esc($borrow['firstname'] . ' ' . $borrow['lastname']) ?></td>
                                     <td><?= esc($borrow['equipment_name']) ?></td>
+                                    <td><?= !empty($borrow['accessories']) ? esc(implode(', ', $borrow['accessories'])) : '<span class="text-muted">-</span>' ?></td>
                                     <td><?= esc($borrow['room_number']) ?></td>
                                     <td><?= date('M d, Y', strtotime($borrow['borrow_date'])) ?></td>
                                     <td><?= date('h:i A', strtotime($borrow['borrow_time'])) ?></td>
