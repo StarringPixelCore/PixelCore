@@ -399,3 +399,98 @@
             border: none;
         }
 
+        /* Global responsive overrides - keep layout usable on smaller screens */
+        @media (max-width: 1200px) {
+            .dashboard-container {
+                padding: 24px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .dashboard-container {
+                margin-left: 220px;
+            }
+
+            .login-left {
+                display: none; /* simplify login layout on smaller screens */
+            }
+
+            .login-right {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            /* Collapse/hide sidebar and let content go full width */
+            .sidebar {
+                position: fixed;
+                left: -260px;
+                top: 0;
+                height: 100vh;
+                z-index: 9999;
+                transition: left 0.25s ease;
+            }
+
+            /* When showing sidebar via a JS class, it can slide in by adding .sidebar--open */
+            .sidebar.sidebar--open {
+                left: 0;
+            }
+
+            .dashboard-container,
+            .profile-container,
+            .main-container {
+                margin-left: 0 !important;
+                padding: 18px !important;
+            }
+
+            .profile-container {
+                padding: 24px 18px !important;
+            }
+
+            .profile-top-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .user-info-grid {
+                grid-template-columns: 1fr;
+                gap: 16px 20px;
+            }
+
+            .profile-photo-wrapper {
+                width: 140px;
+                height: 140px;
+            }
+
+            .profile-header {
+                font-size: 28px;
+            }
+
+            .password-box {
+                width: 100%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body { font-size: 14px; }
+
+            .menu-item { padding: 12px 18px; font-size: 15px; }
+
+            .login-panel { padding: 20px; width: 92%; }
+
+            .profile-name-display { font-size: 22px; }
+
+            .stat-value { font-size: 32px; }
+
+            /* Make buttons full-width for easier tapping */
+            .btn, .login-btn, .profile-save-btn {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+

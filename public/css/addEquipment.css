@@ -292,4 +292,50 @@ input[type="number"].form-control::-webkit-inner-spin-button {
         padding: 10px 14px;
         font-size: 14px;
     }
+
+    
 }
+
+/* Extra mobile-friendly tweaks */
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .dashboard-container {
+        margin-left: 0;
+        padding: 18px;
+    }
+
+    .content-card {
+        padding: 1.5rem;
+    }
+
+    .page-title {
+        font-size: 24px;
+    }
+
+    /* Make button groups stack and buttons expand for touch */
+    .btn-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    /* Reduce form spacing so content fits on smaller screens */
+    form { gap: 0.75rem; }
+
+    .content-card { box-shadow: none; }
+}
+
+@media (max-width: 480px) {
+    .page-title { font-size: 20px; }
+    .form-label { font-size: 14px; }
+    .form-control { padding: 10px; font-size: 14px; }
+    .content-card { padding: 1rem; border-radius: 12px; }
+    .btn { padding: 10px 16px; font-size: 15px; }
+}
+
