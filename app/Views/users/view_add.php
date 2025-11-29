@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?= view('include/view_head', ['title' => $title ?? 'Add New User']) ?>
-<link rel="stylesheet" href="<?= base_url('public/css/editUser.css') ?>">
+<link rel="stylesheet" href="<?= base_url('public/css/addUser.css') ?>">
 <body>
 <div class="wrapper">
     <?= view('include/view_sidebar', ['active' => $active ?? 'users']) ?>
