@@ -6,7 +6,7 @@ CREATE TABLE `tblusers` (
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `role` varchar(50) DEFAULT 'USER',
-  `profile_picture` varchar(255) DEFAULT 'default.png',
+  `profile_picture` varchar(255) DEFAULT 'default.jpg',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `verify_token` varchar(255) NOT NULL,
   `is_verified` int(11) NOT NULL DEFAULT 0,
