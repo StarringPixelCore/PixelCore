@@ -13,6 +13,14 @@
 
         <!-- STATS SECTION -->
         <div class="row mt-4">
+            
+            <div class="row mt-4 mb-4">
+                <div class="col-12">
+                    <a href="<?= base_url('reports') ?>" class="btn btn-success btn-lg">
+                        <i class="bi bi-file-earmark-text"></i> Generate Reports
+                    </a>
+                </div>
+            </div>
 
             <div class="col-md-6 mb-4">
                 <div class="stat-card d-flex align-items-center">
@@ -52,7 +60,7 @@
                     <i class="bi bi-calendar-event fs-1 me-3"></i>
                     <div>
                         <p class="fw-bold m-0">RESERVATIONS</p>
-                        <div class="stat-value"><?= $reservations_today ?? 0 ?> Today</div>
+                        <div class="stat-value"><?= $reservations_today ?? 0 ?></div>
                         <p class="label-text">Upcoming Reservations</p>
                     </div>
                 </div>
