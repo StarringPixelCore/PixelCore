@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?= view('include/view_head', ['title' => $title ?? 'Users List']) ?>
-<link rel="stylesheet" href="<?= base_url('public/css/users.css') ?>">
+<link rel="stylesheet" href="<?= base_url('public/css/equipments.css') ?>">
 
 <body>
 <div class="wrapper">

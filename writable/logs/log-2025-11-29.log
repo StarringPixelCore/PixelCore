@@ -1634,3 +1634,222 @@ DEBUG - 2025-11-29 11:57:16 --> Session: Class initialized using 'CodeIgniter\Se
 DEBUG - 2025-11-29 11:57:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-11-29 11:57:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 DEBUG - 2025-11-29 11:57:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-29 11:59:08 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'itso', 3307, '', 0)
+#1 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\PixelCore\system\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\xampp\htdocs\PixelCore\system\Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\xampp\htdocs\PixelCore\system\BaseModel.php(1277): CodeIgniter\Model->countAllResults(false)
+#6 C:\xampp\htdocs\PixelCore\app\Controllers\Equipment.php(47): CodeIgniter\BaseModel->paginate(10)
+#7 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(933): App\Controllers\Equipment->index()
+#8 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Equipment))
+#9 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\PixelCore\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\PixelCore\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\PixelCore\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\PixelCore\system\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#3 C:\xampp\htdocs\PixelCore\system\Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#4 C:\xampp\htdocs\PixelCore\system\BaseModel.php(1277): CodeIgniter\Model->countAllResults(false)
+#5 C:\xampp\htdocs\PixelCore\app\Controllers\Equipment.php(47): CodeIgniter\BaseModel->paginate(10)
+#6 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(933): App\Controllers\Equipment->index()
+#7 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Equipment))
+#8 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\PixelCore\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\PixelCore\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\PixelCore\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-29 11:59:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: equipment]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1733): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `tblequipment`', [], false)
+ 3 SYSTEMPATH\Model.php(675): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 4 SYSTEMPATH\BaseModel.php(1277): CodeIgniter\Model->countAllResults(false)
+ 5 APPPATH\Controllers\Equipment.php(47): CodeIgniter\BaseModel->paginate(10)
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Equipment->index()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Equipment))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-29 11:59:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-29 11:59:12 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'itso', 3307, '', 0)
+#1 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\PixelCore\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\PixelCore\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\PixelCore\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '4')
+#6 C:\xampp\htdocs\PixelCore\app\Views\include\view_sidebar.php(14): CodeIgniter\BaseModel->find('4')
+#7 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#9 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('include/view_si...', Array, true)
+#10 C:\xampp\htdocs\PixelCore\app\Views\users\view_add.php(7): view('include/view_si...', Array)
+#11 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#13 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('users/view_add', Array, true)
+#14 C:\xampp\htdocs\PixelCore\app\Controllers\Users.php(58): view('users/view_add', Array)
+#15 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(933): App\Controllers\Users->add()
+#16 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#17 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#18 C:\xampp\htdocs\PixelCore\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#19 C:\xampp\htdocs\PixelCore\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#20 C:\xampp\htdocs\PixelCore\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#21 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\PixelCore\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\PixelCore\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\PixelCore\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '4')
+#5 C:\xampp\htdocs\PixelCore\app\Views\include\view_sidebar.php(14): CodeIgniter\BaseModel->find('4')
+#6 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('include/view_si...', Array, true)
+#9 C:\xampp\htdocs\PixelCore\app\Views\users\view_add.php(7): view('include/view_si...', Array)
+#10 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#12 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('users/view_add', Array, true)
+#13 C:\xampp\htdocs\PixelCore\app\Controllers\Users.php(58): view('users/view_add', Array)
+#14 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(933): App\Controllers\Users->add()
+#15 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#16 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#17 C:\xampp\htdocs\PixelCore\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#18 C:\xampp\htdocs\PixelCore\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#19 C:\xampp\htdocs\PixelCore\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#20 {main}
+CRITICAL - 2025-11-29 11:59:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: users/add]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tblusers`
+WHERE `tblusers`.`id` = :tblusers.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(611): CodeIgniter\Model->doFind(true, '4')
+ 5 APPPATH\Views\include\view_sidebar.php(14): CodeIgniter\BaseModel->find('4')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\include\\view_sidebar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('include/view_sidebar', [], true)
+ 9 APPPATH\Views\users\view_add.php(7): view('include/view_sidebar', [...])
+10 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\users\\view_add.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/view_add', [], true)
+13 APPPATH\Controllers\Users.php(58): view('users/view_add', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Users->add()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-29 11:59:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-29 11:59:17 --> Error connecting to the database: mysqli_sql_exception: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php:202
+Stack trace:
+#0 C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php(202): mysqli->real_connect('localhost', 'root', '', 'itso', 3307, '', 0)
+#1 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\xampp\htdocs\PixelCore\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\PixelCore\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\PixelCore\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '4')
+#6 C:\xampp\htdocs\PixelCore\app\Views\include\view_sidebar.php(14): CodeIgniter\BaseModel->find('4')
+#7 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#8 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#9 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('include/view_si...', Array, true)
+#10 C:\xampp\htdocs\PixelCore\app\Views\users\view_add.php(7): view('include/view_si...', Array)
+#11 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#12 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#13 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('users/view_add', Array, true)
+#14 C:\xampp\htdocs\PixelCore\app\Controllers\Users.php(58): view('users/view_add', Array)
+#15 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(933): App\Controllers\Users->add()
+#16 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#17 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#18 C:\xampp\htdocs\PixelCore\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#19 C:\xampp\htdocs\PixelCore\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#20 C:\xampp\htdocs\PixelCore\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#21 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No connection could be made because the target machine actively refused it in C:\xampp\htdocs\PixelCore\system\Database\MySQLi\Connection.php:246
+Stack trace:
+#0 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(419): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\xampp\htdocs\PixelCore\system\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\xampp\htdocs\PixelCore\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\xampp\htdocs\PixelCore\system\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\xampp\htdocs\PixelCore\system\BaseModel.php(611): CodeIgniter\Model->doFind(true, '4')
+#5 C:\xampp\htdocs\PixelCore\app\Views\include\view_sidebar.php(14): CodeIgniter\BaseModel->find('4')
+#6 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#7 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#8 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('include/view_si...', Array, true)
+#9 C:\xampp\htdocs\PixelCore\app\Views\users\view_add.php(7): view('include/view_si...', Array)
+#10 C:\xampp\htdocs\PixelCore\system\View\View.php(226): include('C:\\xampp\\htdocs...')
+#11 C:\xampp\htdocs\PixelCore\system\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+#12 C:\xampp\htdocs\PixelCore\system\Common.php(1167): CodeIgniter\View\View->render('users/view_add', Array, true)
+#13 C:\xampp\htdocs\PixelCore\app\Controllers\Users.php(58): view('users/view_add', Array)
+#14 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(933): App\Controllers\Users->add()
+#15 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#16 C:\xampp\htdocs\PixelCore\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#17 C:\xampp\htdocs\PixelCore\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#18 C:\xampp\htdocs\PixelCore\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#19 C:\xampp\htdocs\PixelCore\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#20 {main}
+CRITICAL - 2025-11-29 11:59:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No connection could be made because the target machine actively refused it
+[Method: GET, Route: users/add]
+in SYSTEMPATH\Database\BaseConnection.php on line 465.
+ 1 SYSTEMPATH\Database\BaseConnection.php(614): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `tblusers`
+WHERE `tblusers`.`id` = :tblusers.id:', [...], false)
+ 3 SYSTEMPATH\Model.php(210): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(611): CodeIgniter\Model->doFind(true, '4')
+ 5 APPPATH\Views\include\view_sidebar.php(14): CodeIgniter\BaseModel->find('4')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\include\\view_sidebar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('include/view_sidebar', [], true)
+ 9 APPPATH\Views\users\view_add.php(7): view('include/view_sidebar', [...])
+10 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\PixelCore\\app\\Views\\users\\view_add.php')
+11 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+12 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('users/view_add', [], true)
+13 APPPATH\Controllers\Users.php(58): view('users/view_add', [...])
+14 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Users->add()
+15 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+16 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+17 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+18 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+19 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-29 11:59:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 11:59:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-29 12:00:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
