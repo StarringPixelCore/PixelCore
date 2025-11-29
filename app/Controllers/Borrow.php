@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\BorrowModel;
 use App\Models\EquipmentModel;
+use App\Models\EquipmentBundleModel;
 use App\Models\UserModel;
 use App\Services\EmailService;
 
@@ -103,12 +104,15 @@ class Borrow extends BaseController
         $emailService = new EmailService();
 
         // Create borrow record for each equipment
+        $equipmentNames = [];
         foreach ($equipmentIds as $equipmentId) {
             $equipment = $equipmentModel->find($equipmentId);
             
             if (!$equipment || $equipment['status'] !== 'Active' || $equipment['available_count'] <= 0) {
                 continue; // Skip unavailable equipment
             }
+
+            $equipmentNames[] = $equipment['equipment_name'];
 
             $borrowData = [
                 'user_id' => $userId,
@@ -127,8 +131,11 @@ class Borrow extends BaseController
             $borrowModel->insert($borrowData);
         }
 
-        // Send email notification
-        $emailService->sendBorrowConfirmationEmail($user);
+        // Send email notification (send one email with all equipment names)
+        if (!empty($equipmentNames)) {
+            $equipmentList = implode(', ', $equipmentNames);
+            $emailService->sendBorrowConfirmationEmail($user, $equipmentList, $roomNumber, $borrowDate, $borrowTime, 'Pending');
+        }
 
         session()->setFlashdata('success', 'Borrow request submitted successfully! Please check your email for confirmation.');
         return redirect()->to('/borrow');
@@ -166,7 +173,7 @@ class Borrow extends BaseController
         // Update borrow status
         $borrowModel->update($id, ['status' => 'Received']);
 
-        // Decrease available count
+        // Decrease available count for parent equipment
         $equipmentModel = new EquipmentModel();
         $equipment = $equipmentModel->find($borrow['equipment_id']);
         if ($equipment) {
@@ -176,7 +183,25 @@ class Borrow extends BaseController
             ]);
         }
 
-        session()->setFlashdata('success', 'Equipment marked as received. Available count updated.');
+        // Decrease available count for bundled accessories
+        $bundleModel = new EquipmentBundleModel();
+        $bundles = $bundleModel->where('parent_equipment_id', $borrow['equipment_id'])->findAll();
+
+        foreach ($bundles as $bundle) {
+            $accessory = $equipmentModel->find($bundle['accessory_equipment_id']);
+            if (!$accessory) {
+                continue;
+            }
+
+            $decrementBy = (int) $bundle['quantity_per_parent'];
+            $newAccessoryCount = max(0, $accessory['available_count'] - $decrementBy);
+
+            $equipmentModel->update($bundle['accessory_equipment_id'], [
+                'available_count' => $newAccessoryCount
+            ]);
+        }
+
+        session()->setFlashdata('success', 'Successfully marked equipment as received.');
         return redirect()->to('/borrowed');
     }
 
@@ -215,7 +240,7 @@ class Borrow extends BaseController
             'returned_at' => date('Y-m-d H:i:s')
         ]);
 
-        // Increase available count
+        // Increase available count for parent equipment
         $equipmentModel = new EquipmentModel();
         $equipment = $equipmentModel->find($borrow['equipment_id']);
         if ($equipment) {
@@ -225,16 +250,35 @@ class Borrow extends BaseController
             ]);
         }
 
+        // Increase available count for bundled accessories
+        $bundleModel = new EquipmentBundleModel();
+        $bundles = $bundleModel->where('parent_equipment_id', $borrow['equipment_id'])->findAll();
+
+        foreach ($bundles as $bundle) {
+            $accessory = $equipmentModel->find($bundle['accessory_equipment_id']);
+            if (!$accessory) {
+                continue;
+            }
+
+            $incrementBy = (int) $bundle['quantity_per_parent'];
+            $newAccessoryCount = min($accessory['quantity'], $accessory['available_count'] + $incrementBy);
+
+            $equipmentModel->update($bundle['accessory_equipment_id'], [
+                'available_count' => $newAccessoryCount
+            ]);
+        }
+
         // Send return confirmation email to the borrower
         $emailService = new EmailService();
         $userData = [
             'firstname' => $borrow['firstname'],
             'lastname' => $borrow['lastname'],
-            'email' => $borrow['email']
+            'email' => $borrow['email'],
+            'id_number' => $borrow['id_number']
         ];
-        $emailService->sendReturnConfirmationEmail($userData, $borrow['equipment_name']);
+        $emailService->sendReturnConfirmationEmail($userData, $borrow['equipment_name'], $borrow['room_number'], $borrow['borrow_date'], $borrow['borrow_time']);
 
-        session()->setFlashdata('success', 'Equipment marked as returned. Available count updated. Return confirmation email sent to borrower.');
+        session()->setFlashdata('success', 'Successfully marked equipment as returned.');
         return redirect()->to('/returned');
     }
 }

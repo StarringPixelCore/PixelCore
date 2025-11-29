@@ -33,6 +33,7 @@
                                 <th>ID Number</th>
                                 <th>Name</th>
                                 <th>Equipment</th>
+                                <th>Accessory</th>
                                 <th>Room Number</th>
                                 <th>Date</th>
                                 <th>Time</th>
@@ -46,6 +47,7 @@
                                     <td><?= esc($borrow['id_number']) ?></td>
                                     <td><?= esc($borrow['firstname'] . ' ' . $borrow['lastname']) ?></td>
                                     <td><?= esc($borrow['equipment_name']) ?></td>
+                                    <td><?= !empty($borrow['accessories']) ? esc(implode(', ', $borrow['accessories'])) : '<span class="text-muted">-</span>' ?></td>
                                     <td><?= esc($borrow['room_number']) ?></td>
                                     <td><?= date('M d, Y', strtotime($borrow['borrow_date'])) ?></td>
                                     <td><?= date('h:i A', strtotime($borrow['borrow_time'])) ?></td>
