@@ -5,7 +5,7 @@ CREATE TABLE `tblusers` (
   `lastname` varchar(100) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(50) DEFAULT 'USERS',
+  `role` varchar(50) DEFAULT 'ITSO PERSONNEL',
   `profile_picture` varchar(255) DEFAULT 'default.jpg',
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
   `verify_token` varchar(255) NOT NULL,

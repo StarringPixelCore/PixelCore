@@ -96,7 +96,7 @@ class Auth extends BaseController
             'lastname'        => $data['lastname'],
             'email'           => $data['email'],
             'password'        => password_hash($data['password'], PASSWORD_DEFAULT),
-            'role'            => 'USER', // default role for public sign ups
+            'role'            => 'ITSO PERSONNEL', // default role for public sign ups
             'profile_picture' => 'default.jpg',
             'verify_token'    => bin2hex(random_bytes(16)),
             'is_verified'     => 0,
