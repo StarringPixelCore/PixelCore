@@ -59,3 +59,23 @@ $routes->get('borrow', 'Borrow::index');
 $routes->post('borrow/submit', 'Borrow::submit');
 $routes->get('borrow/received/(:num)', 'Borrow::received/$1');
 $routes->get('borrow/returned/(:num)', 'Borrow::returned/$1');
+
+// Routes for Reserve controller
+$routes->get('reserve', 'Reserve::index');
+$routes->post('reserve/submit', 'Reserve::submit');
+$routes->get('reserve/received/(:num)', 'Reserve::received/$1');
+$routes->get('reserve/returned/(:num)', 'Reserve::returned/$1');
+$routes->get('reserve/cancel/(:num)', 'Reserve::cancel/$1');
+$routes->get('reserve/reschedule/(:num)', 'Reserve::reschedule/$1');
+$routes->post('reserve/reschedule/(:num)', 'Reserve::reschedulePost/$1');
+$routes->get('reservations/returned', 'Dashboard::reservationsReturned');
+
+// Routes for Reports controller
+$routes->get('reports', 'Reports::index');
+$routes->get('active-equipment', 'Reports::activeEquipment');
+$routes->get('reports/export-active-equipment', 'Reports::exportActiveEquipment');
+$routes->get('unusable-equipment', 'Reports::unusableEquipment');
+$routes->get('reports/export-unusable-equipment', 'Reports::exportUnusableEquipment');
+$routes->get('borrowing-history', 'Reports::borrowingHistory');
+$routes->get('reports/borrowing-history', 'Reports::borrowingHistory');
+$routes->get('reports/export-borrowing-history', 'Reports::exportBorrowingHistory');
