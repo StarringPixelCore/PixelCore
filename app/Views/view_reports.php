@@ -1,4 +1,5 @@
 <?= $this->include('include/view_head'); ?>
+<link rel="stylesheet" href="<?= base_url('public/css/reports.css') ?>">
 
 <body>
 <div class="wrapper">
@@ -19,7 +20,7 @@
                         <h5 class="card-title mt-3">Active Equipment</h5>
                         <p class="card-text">View all active equipment in the system</p>
                         <a href="<?= base_url('active-equipment') ?>" class="btn btn-success">
-                            <i class="bi bi-eye"></i> View Report
+                            View Report
                         </a>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
                         <h5 class="card-title mt-3">Unusable Equipment</h5>
                         <p class="card-text">View deactivated or damaged equipment</p>
                         <a href="<?= base_url('unusable-equipment') ?>" class="btn btn-danger">
-                            <i class="bi bi-eye"></i> View Report
+                            View Report
                         </a>
                     </div>
                 </div>
@@ -47,7 +48,7 @@
                         <h5 class="card-title mt-3">Borrowing History</h5>
                         <p class="card-text">View user borrowing records and history</p>
                         <a href="<?= base_url('borrowing-history') ?>" class="btn btn-primary">
-                            <i class="bi bi-eye"></i> View Report
+                            View Report
                         </a>
                     </div>
                 </div>

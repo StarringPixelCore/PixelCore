@@ -1,0 +1,285 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f3f7ef;
+    min-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    margin-left: 250px;
+    padding: 40px 50px;
+    flex: 1;
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 2rem;
+}
+
+.page-title {
+    color: #31694E;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: #658C58;
+    font-size: 16px;
+    margin: 0;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #BBC863;
+}
+
+/* Utility Classes */
+.mb-4 {
+    margin-bottom: 2rem;
+}
+
+.mt-4 {
+    margin-top: 2rem;
+}
+
+.py-4 {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+/* Content Actions */
+.content-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Content Card */
+.content-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    overflow-x: auto;
+}
+
+/* Button Styles */
+.btn {
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+}
+
+.btn-secondary {
+    background: #BBC863;
+    color: #31694E;
+}
+
+.btn-secondary:hover {
+    background: #F0E491;
+    color: #31694E;
+
+}
+
+.btn-success {
+    background: #658C58;
+    color: #F0E491;
+}
+
+.btn-success:hover {
+    background: #31694E;
+}
+
+.btn i {
+    font-size: 1rem;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.table thead {
+    background: linear-gradient(135deg, #31694E 0%, #658C58 100%);
+}
+
+.table thead th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: #31694E;
+    border: none;
+    white-space: nowrap;
+}
+
+.table thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.table thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.table tbody td {
+    padding: 1rem;
+    color: #31694E;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.table tbody td strong {
+    color: #31694E;
+    font-weight: 600;
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+}
+
+.bg-success {
+    background-color: #658C58;
+    color: #F0E491;
+}
+
+.bg-danger {
+    background-color: #8B4545;
+    color: #F0E491;
+}
+
+/* Alert Styles */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.alert-info {
+    background: linear-gradient(135deg, #31694E 0%, #658C58 100%);
+    color: #F0E491;
+    border: none;
+}
+
+.alert strong {
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .content-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .content-card {
+        padding: 1.5rem;
+    }
+    
+    .page-title {
+        font-size: 26px;
+    }
+    
+    .page-subtitle {
+        font-size: 14px;
+    }
+    
+    .table {
+        font-size: 13px;
+    }
+    
+    .table thead th,
+    .table tbody td {
+        padding: 0.75rem 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 15px;
+    }
+    
+    .content-card {
+        padding: 1rem;
+    }
+    
+    .page-title {
+        font-size: 22px;
+    }
+    
+    .table {
+        font-size: 12px;
+    }
+    
+    .table thead th,
+    .table tbody td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 11px;
+    }
+}

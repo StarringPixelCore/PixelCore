@@ -14,13 +14,15 @@
         <!-- STATS SECTION -->
         <div class="row mt-4">
             
-            <div class="row mt-4 mb-4">
-                <div class="col-12">
-                    <a href="<?= base_url('reports') ?>" class="btn btn-success btn-lg">
-                        <i class="bi bi-file-earmark-text"></i> Generate Reports
-                    </a>
+            <?php if (session()->get('role') === 'ITSO PERSONNEL'): ?>
+                <div class="row mt-4 mb-4">
+                    <div class="col-12">
+                        <a href="<?= base_url('reports') ?>" class="btn btn-success btn-lg">
+                            <i class="bi bi-file-earmark-text"></i> Generate Reports
+                        </a>
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
             <div class="col-md-6 mb-4">
                 <div class="stat-card d-flex align-items-center">

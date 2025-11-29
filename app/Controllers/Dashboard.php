@@ -16,20 +16,8 @@ class Dashboard extends BaseController
             return redirect()->to('/login');
         }
 
-        // Only ITSO PERSONNEL can access dashboard
+        // All logged-in users can access dashboard
         $userRole = session()->get('role');
-        if ($userRole !== 'ITSO PERSONNEL') {
-            // Redirect STUDENT to borrow page
-            if ($userRole === 'STUDENT') {
-                return redirect()->to('/borrow');
-            }
-            // Redirect ASSOCIATE to borrow page
-            if ($userRole === 'ASSOCIATE') {
-                return redirect()->to('/borrow');
-            }
-            // Redirect other roles to login
-            return redirect()->to('/login');
-        }
 
         $equipmentModel = new EquipmentModel();
         $borrowModel = new BorrowModel();

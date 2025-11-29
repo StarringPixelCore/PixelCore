@@ -1,4 +1,6 @@
 <?= $this->include('include/view_head', ['title' => $title ?? 'Reschedule Reservation']) ?>
+<link rel="stylesheet" href="<?= base_url('public/css/reschedReserve.css') ?>">
+
 
 <body>
 <div class="wrapper">

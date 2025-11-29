@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?= view('include/view_head', ['title' => $title ?? 'Edit User']) ?>
+<link rel="stylesheet" href="<?= base_url('public/css/addEquipment.css') ?>">
+
 <body>
 <div class="wrapper">
     <?= view('include/view_sidebar', ['active' => $active ?? 'users']) ?>

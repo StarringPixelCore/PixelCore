@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <?= view('include/view_head', ['title' => $title ?? 'Users List']) ?>
+<link rel="stylesheet" href="<?= base_url('public/css/users.css') ?>">
+
 <body>
 <div class="wrapper">
     <?= view('include/view_sidebar', ['active' => $active ?? 'users']) ?>
@@ -9,27 +11,22 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-lg-10">
                     <div class="content-card">
-                        <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="header-section">
                             <h2 class="page-title">Users List</h2>
-                            <a href="<?= base_url('users/add'); ?>" class="btn btn-info add-user-btn">
-                                <i class="bi bi-person-plus me-2"></i>
+                            <a href="<?= base_url('users/add'); ?>" class="btn-add">
+                                <i class="bi bi-person-plus"></i>
                                 Add New User
                             </a>
                         </div>
-                        <?php
-                            if(session('success')):
-                        ?>
-                                <div class="alert alert-success">
-                                    <p>
-                                        <?= session('success'); ?>
-                                    </p>
-                                </div>
-                        <?php
-                            endif;
-                        ?>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-hover">
-                                <thead class="table-success">
+                        <?php if(session('success')): ?>
+                            <div class="alert alert-success">
+                                <p><?= session('success'); ?></p>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <div class="table-container">
+                            <table class="custom-table">
+                                <thead>
                                     <tr>
                                         <th>ID Number</th>
                                         <th>Name</th>
@@ -51,14 +48,14 @@
                                             <td><?= esc($user['email']) ?></td>
                                             <td><?= esc($user['role']) ?></td>
                                             <td>
-                                                <div class="btn-group" role="group">
-                                                    <a href="<?= base_url('users/view/'.$user['id']) ?>" class="btn btn-sm btn-outline-primary" title="View">
+                                                <div class="action-buttons">
+                                                    <a href="<?= base_url('users/view/'.$user['id']) ?>" class="btn-view" title="View">
                                                         <i class="bi bi-eye"></i>
                                                     </a>
-                                                    <a href="<?= base_url('users/edit/'.$user['id']) ?>" class="btn btn-sm btn-outline-warning" title="Edit">
+                                                    <a href="<?= base_url('users/edit/'.$user['id']) ?>" class="btn-edit" title="Edit">
                                                         <i class="bi bi-pencil"></i>
                                                     </a>
-                                                    <a href="#" class="btn btn-sm btn-outline-danger delete-btn" 
+                                                    <a href="#" class="btn-delete delete-btn" 
                                                        data-bs-toggle="modal" 
                                                        data-bs-target="#confirmDeleteModal" 
                                                        data-url="<?= base_url('users/delete/'.$user['id']) ?>"
@@ -74,10 +71,7 @@
                                 </tbody>
                             </table>
                             <div class="pagination-wrapper">
-                                <div class="pagination-info">
-                                    Page <?= $pager->getCurrentPage() ?> of <?= $pager->getPageCount() ?>
-                                </div>
-                                <?= $pager->links(); ?>
+                                <?= view('include/tailwind_pagination', ['pager' => $pager]) ?>
                             </div>
                         </div>
                     </div>

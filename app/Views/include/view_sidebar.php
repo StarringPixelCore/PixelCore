@@ -45,9 +45,13 @@ if ($isLoggedIn) {
         if ($isStudent): 
         ?>
             <!-- Menu for STUDENT -->
+            <a href="<?= base_url('dashboard') ?>" class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
+            <a href="<?= base_url('equipment') ?>" class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENT</a>
             <a href="<?= base_url('borrow') ?>" class="menu-item <?= ($active=='borrow') ? 'active' : '' ?>">BORROW</a>
         <?php elseif ($isAssociate): ?>
             <!-- Menu for ASSOCIATE -->
+            <a href="<?= base_url('dashboard') ?>" class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
+            <a href="<?= base_url('equipment') ?>" class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENT</a>
             <a href="<?= base_url('borrow') ?>" class="menu-item <?= ($active=='borrow') ? 'active' : '' ?>">BORROW</a>
             <a href="<?= base_url('reserve') ?>" class="menu-item <?= ($active=='reserve') ? 'active' : '' ?>">RESERVE</a>
         <?php elseif ($isITSO): ?>

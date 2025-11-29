@@ -1,4 +1,5 @@
 <?= $this->include('include/view_head'); ?>
+<link rel="stylesheet" href="<?= base_url('public/css/viewReports.css') ?>">
 
 <body>
 <div class="wrapper">

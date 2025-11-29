@@ -1,4 +1,6 @@
 <?= $this->include('include/view_head', ['title' => $title ?? 'View Equipment']) ?>
+<link rel="stylesheet" href="<?= base_url('public/css/equipment.css') ?>">
+
 
 <body>
 <div class="wrapper">

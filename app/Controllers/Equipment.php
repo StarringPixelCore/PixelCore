@@ -7,20 +7,26 @@ use App\Models\EquipmentModel;
 class Equipment extends BaseController
 {
     /**
-     * Check if user is logged in and has ITSO PERSONNEL role
+     * Check if user is logged in
      */
     private function checkAccess()
     {
         if (!session()->get('logged_in')) {
             return redirect()->to('/login');
         }
+        return null;
+    }
 
+    /**
+     * Check if user has write access (ITSO PERSONNEL only)
+     */
+    private function checkWriteAccess()
+    {
         $userRole = session()->get('role');
         if ($userRole !== 'ITSO PERSONNEL') {
             session()->setFlashdata('error', 'Access denied. This section is only available for ITSO PERSONNEL.');
-            return redirect()->to('/dashboard');
+            return redirect()->to('/equipment');
         }
-
         return null;
     }
 
@@ -60,6 +66,11 @@ class Equipment extends BaseController
             return $accessCheck;
         }
 
+        $writeCheck = $this->checkWriteAccess();
+        if ($writeCheck !== null) {
+            return $writeCheck;
+        }
+
         helper('form');
         $data = [
             'title' => 'Add New Equipment',
@@ -77,6 +88,11 @@ class Equipment extends BaseController
         $accessCheck = $this->checkAccess();
         if ($accessCheck !== null) {
             return $accessCheck;
+        }
+
+        $writeCheck = $this->checkWriteAccess();
+        if ($writeCheck !== null) {
+            return $writeCheck;
         }
 
         $validation = service('validation');
@@ -143,6 +159,11 @@ class Equipment extends BaseController
             return $accessCheck;
         }
 
+        $writeCheck = $this->checkWriteAccess();
+        if ($writeCheck !== null) {
+            return $writeCheck;
+        }
+
         $equipmentModel = model('EquipmentModel');
         $equipment = $equipmentModel->find($id);
 
@@ -169,6 +190,11 @@ class Equipment extends BaseController
         $accessCheck = $this->checkAccess();
         if ($accessCheck !== null) {
             return $accessCheck;
+        }
+
+        $writeCheck = $this->checkWriteAccess();
+        if ($writeCheck !== null) {
+            return $writeCheck;
         }
 
         $validation = service('validation');
@@ -209,6 +235,11 @@ class Equipment extends BaseController
             return $accessCheck;
         }
 
+        $writeCheck = $this->checkWriteAccess();
+        if ($writeCheck !== null) {
+            return $writeCheck;
+        }
+
         $equipmentModel = model('EquipmentModel');
         $equipment = $equipmentModel->find($id);
 
@@ -232,6 +263,11 @@ class Equipment extends BaseController
         $accessCheck = $this->checkAccess();
         if ($accessCheck !== null) {
             return $accessCheck;
+        }
+
+        $writeCheck = $this->checkWriteAccess();
+        if ($writeCheck !== null) {
+            return $writeCheck;
         }
 
         $equipmentModel = model('EquipmentModel');

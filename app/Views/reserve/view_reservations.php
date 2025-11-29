@@ -1,4 +1,5 @@
 <?= $this->include('include/view_head', ['title' => $title ?? 'Reservations']) ?>
+<link rel="stylesheet" href="<?= base_url('public/css/reserve.css') ?>">
 
 <body>
 <div class="wrapper">

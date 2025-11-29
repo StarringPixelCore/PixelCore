@@ -1,4 +1,6 @@
 <?= $this->include('include/view_head', ['title' => $title ?? 'Reserve Equipment']) ?>
+<link rel="stylesheet" href="<?= base_url('public/css/borrowToReserve.css') ?>">
+
 
 <body>
 <div class="wrapper">

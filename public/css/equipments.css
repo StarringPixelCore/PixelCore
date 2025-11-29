@@ -1,0 +1,398 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #f3f7ef;
+    min-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    margin-left: 250px;
+    padding: 40px 50px;
+    flex: 1;
+}
+
+/* Container Styles */
+.container-fluid {
+    width: 100%;
+    max-width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+/* Content Card */
+.content-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Header Section */
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 3px solid #BBC863;
+}
+
+.page-title {
+    color: #31694E;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.page-subtitle {
+    color: #658C58;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Add Button */
+.btn-add {
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #31694E;
+    color: #F0E491;
+    box-shadow: 0 2px 6px rgba(49, 105, 78, 0.3);
+}
+
+.btn-add:hover {
+    background: #658C58;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(49, 105, 78, 0.4);
+}
+
+.btn-add i {
+    font-size: 1.1rem;
+}
+
+/* Alert Styles */
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.alert p {
+    margin: 0;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-left: 4px solid #28a745;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #ffe6e6;
+    border-left: 4px solid #dc3545;
+    color: #721c24;
+}
+
+.btn-close-alert {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.7;
+    padding: 0;
+    line-height: 1;
+}
+
+.btn-close-alert:hover {
+    opacity: 1;
+}
+
+/* Table Container */
+.table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1.5rem;
+}
+
+/* Custom Table */
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+.custom-table thead {
+    background: linear-gradient(135deg, #31694E 0%, #658C58 100%);
+}
+
+.custom-table thead th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    color: #F0E491;
+    border: none;
+    white-space: nowrap;
+}
+
+.custom-table thead th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.custom-table thead th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.custom-table tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s ease;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.custom-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.custom-table tbody td {
+    padding: 1rem;
+    color: #31694E;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.custom-table tbody td strong {
+    color: #31694E;
+    font-weight: 600;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* Badge Styles */
+.badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+}
+
+.badge-success {
+    background-color: #658C58;
+    color: #F0E491;
+}
+
+.badge-danger {
+    background-color: #8B4545;
+    color: #F0E491;
+}
+
+.badge-warning {
+    background-color: #F0E491;
+    color: #31694E;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.btn-view,
+.btn-edit,
+.btn-delete,
+.btn-reactivate {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.btn-view {
+    background: #658C58;
+    color: #F0E491;
+}
+
+.btn-view:hover {
+    background: #31694E;
+    transform: translateY(-1px);
+}
+
+.btn-edit {
+    background: #F0E491;
+    color: #31694E;
+}
+
+.btn-edit:hover {
+    background: #BBC863;
+    transform: translateY(-1px);
+}
+
+.btn-delete {
+    background: #8B4545;
+    color: #F0E491;
+}
+
+.btn-delete:hover {
+    background: #6B3434;
+    transform: translateY(-1px);
+}
+
+.btn-reactivate {
+    background: #658C58;
+    color: #F0E491;
+}
+
+.btn-reactivate:hover {
+    background: #31694E;
+    transform: translateY(-1px);
+}
+
+/* Empty State */
+.empty-state {
+    color: #6c757d;
+    font-size: 16px;
+    padding: 2rem;
+}
+
+.empty-state a {
+    color: #31694E;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.empty-state a:hover {
+    color: #658C58;
+}
+
+/* Pagination Wrapper */
+.pagination-wrapper {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dashboard-container {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .content-card {
+        padding: 1.5rem;
+    }
+    
+    .header-section {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .btn-add {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .page-title {
+        font-size: 26px;
+    }
+    
+    .page-subtitle {
+        font-size: 14px;
+    }
+    
+    .custom-table {
+        font-size: 13px;
+    }
+    
+    .custom-table thead th,
+    .custom-table tbody td {
+        padding: 0.75rem 0.5rem;
+    }
+    
+    .action-buttons {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard-container {
+        padding: 15px;
+    }
+    
+    .content-card {
+        padding: 1rem;
+    }
+    
+    .page-title {
+        font-size: 22px;
+    }
+    
+    .custom-table {
+        font-size: 12px;
+    }
+    
+    .custom-table thead th,
+    .custom-table tbody td {
+        padding: 0.5rem 0.25rem;
+    }
+    
+    .badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 11px;
+    }
+    
+    .btn-view,
+    .btn-edit,
+    .btn-delete,
+    .btn-reactivate {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+}
