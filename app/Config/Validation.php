@@ -328,6 +328,35 @@ class Validation extends BaseConfig
         ]
     ];
 
+    public array $reserveSubmit = [
+        'room_number' => [
+            'label' => 'Room Number',
+            'rules' => 'required|min_length[3]|max_length[50]',
+            'errors' => [
+                'required' => 'Please enter the room number.',
+                'min_length' => 'Room number must be at least 3 character long.',
+                'max_length' => 'Room number must not exceed 50 characters.'
+            ]
+        ],
+
+        'reserve_date' => [
+            'label' => 'Reserve Date',
+            'rules' => 'required|valid_date',
+            'errors' => [
+                'required' => 'Please select a reserve date.',
+                'valid_date' => 'Please enter a valid date.'
+            ]
+        ],
+
+        'reserve_time' => [
+            'label' => 'Reserve Time',
+            'rules' => 'required',
+            'errors' => [
+                'required' => 'Please select a reserve time.'
+            ]
+        ]
+    ];
+
     public array $changePassword = [
         'current_password' => [
             'label' => 'Current Password',
