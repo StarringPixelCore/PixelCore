@@ -38,19 +38,22 @@ if ($isLoggedIn) {
     <nav class="sidebar-menu">
         <?php 
         $userRole = session()->get('role');
-        $isStudentOrAssociate = in_array($userRole, ['STUDENT', 'ASSOCIATE']);
+        $isStudent = ($userRole === 'STUDENT');
+        $isAssociate = ($userRole === 'ASSOCIATE');
         $isITSO = ($userRole === 'ITSO PERSONNEL');
         
-        if ($isStudentOrAssociate): 
+        if ($isStudent): 
         ?>
-            <!-- Menu for STUDENT and ASSOCIATE -->
+            <!-- Menu for STUDENT -->
             <a href="<?= base_url('borrow') ?>" class="menu-item <?= ($active=='borrow') ? 'active' : '' ?>">BORROW</a>
-        <?php else: ?>
-            <!-- Menu for ITSO PERSONNEL and other roles -->
+        <?php elseif ($isAssociate): ?>
+            <!-- Menu for ASSOCIATE -->
+            <a href="<?= base_url('borrow') ?>" class="menu-item <?= ($active=='borrow') ? 'active' : '' ?>">BORROW</a>
+            <a href="<?= base_url('reserve') ?>" class="menu-item <?= ($active=='reserve') ? 'active' : '' ?>">RESERVE</a>
+        <?php elseif ($isITSO): ?>
+            <!-- Menu for ITSO PERSONNEL -->
             <a href="<?= base_url('dashboard') ?>" class="menu-item <?= ($active=='dashboard') ? 'active' : '' ?>">DASHBOARD</a>
-            <?php if ($isITSO): ?>
-                <a href="<?= base_url('users') ?>" class="menu-item <?= ($active=='users') ? 'active' : '' ?>">USERS</a>
-            <?php endif; ?>
+            <a href="<?= base_url('users') ?>" class="menu-item <?= ($active=='users') ? 'active' : '' ?>">USERS</a>
             <a href="<?= base_url('equipment') ?>" class="menu-item <?= ($active=='equipments') ? 'active' : '' ?>">EQUIPMENTS</a>
             <a href="<?= base_url('reservations') ?>" class="menu-item <?= ($active=='reservations') ? 'active' : '' ?>">RESERVATIONS</a>
             <a href="<?= base_url('borrowed') ?>" class="menu-item <?= ($active=='borrowed') ? 'active' : '' ?>">BORROWED</a>

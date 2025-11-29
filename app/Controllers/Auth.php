@@ -49,7 +49,15 @@ class Auth extends BaseController
             'logged_in' => true
         ]);
 
-        return redirect()->to('/dashboard');
+        // Redirect based on user role
+        $userRole = session()->get('role');
+        if ($userRole === 'ITSO PERSONNEL') {
+            return redirect()->to('/dashboard');
+        } elseif (in_array($userRole, ['STUDENT', 'ASSOCIATE'])) {
+            return redirect()->to('/borrow');
+        } else {
+            return redirect()->to('/login');
+        }
     }
 
     // Show register page
